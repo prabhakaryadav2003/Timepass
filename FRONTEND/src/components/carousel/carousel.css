@@ -1,0 +1,18 @@
+@keyframes infiniteSlide {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-slide {
+    animation: infiniteSlide 20s linear infinite;
+  }
+
+@media (max-width: 800px) {
+  .make_reponsive {
+    margin-top: 3rem;
+  }
+}

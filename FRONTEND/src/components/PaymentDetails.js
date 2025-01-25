@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function PaymentDetails() {
-  const [fullName, setFullName] = useState('');
-  const [accountNumber, setAccountNumber] = useState('');
-  const [ifscCode, setIfscCode] = useState('');
-  const [bankName, setBankName] = useState('');
-  const [branchName, setBranchName] = useState('');
-  const [upiId, setUpiId] = useState('');
-  const [qrCode, setQrCode] = useState('');
-  const [error, setError] = useState('');
+  const [fullName, setFullName] = useState("");
+  const [accountNumber, setAccountNumber] = useState("");
+  const [ifscCode, setIfscCode] = useState("");
+  const [bankName, setBankName] = useState("");
+  const [branchName, setBranchName] = useState("");
+  const [upiId, setUpiId] = useState("");
+  const [qrCode, setQrCode] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     // Validate fields
-    if (!fullName || !accountNumber || !ifscCode || !bankName || !branchName || !upiId || !qrCode) {
-      setError('Please fill in all fields');
+    if (
+      !fullName ||
+      !accountNumber ||
+      !ifscCode ||
+      !bankName ||
+      !branchName ||
+      !upiId ||
+      !qrCode
+    ) {
+      setError("Please fill in all fields");
       return;
     }
 
@@ -35,13 +43,22 @@ function PaymentDetails() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-lg bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Payment Details</h2>
+        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+          Payment Details
+        </h2>
         <form onSubmit={handleSubmit}>
           {/* Bank Details */}
-          <h3 className="text-xl font-semibold text-gray-700 mb-4">Bank Details</h3>
+          <h3 className="text-xl font-semibold text-gray-700 mb-4">
+            Bank Details
+          </h3>
 
           <div className="mb-4">
-            <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">Full Name</label>
+            <label
+              htmlFor="fullName"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Full Name
+            </label>
             <input
               type="text"
               id="fullName"
@@ -52,7 +69,12 @@ function PaymentDetails() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="accountNumber" className="block text-gray-700 font-medium mb-2">Account Number</label>
+            <label
+              htmlFor="accountNumber"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Account Number
+            </label>
             <input
               type="text"
               id="accountNumber"
@@ -63,7 +85,12 @@ function PaymentDetails() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="ifscCode" className="block text-gray-700 font-medium mb-2">IFSC Code</label>
+            <label
+              htmlFor="ifscCode"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              IFSC Code
+            </label>
             <input
               type="text"
               id="ifscCode"
@@ -74,7 +101,12 @@ function PaymentDetails() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="bankName" className="block text-gray-700 font-medium mb-2">Bank Name</label>
+            <label
+              htmlFor="bankName"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Bank Name
+            </label>
             <input
               type="text"
               id="bankName"
@@ -85,7 +117,12 @@ function PaymentDetails() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="branchName" className="block text-gray-700 font-medium mb-2">Branch Name</label>
+            <label
+              htmlFor="branchName"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Branch Name
+            </label>
             <input
               type="text"
               id="branchName"
@@ -96,10 +133,17 @@ function PaymentDetails() {
           </div>
 
           {/* UPI Details */}
-          <h3 className="text-xl font-semibold text-gray-700 mb-4">UPI Details</h3>
+          <h3 className="text-xl font-semibold text-gray-700 mb-4">
+            UPI Details
+          </h3>
 
           <div className="mb-4">
-            <label htmlFor="upiId" className="block text-gray-700 font-medium mb-2">UPI ID</label>
+            <label
+              htmlFor="upiId"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              UPI ID
+            </label>
             <input
               type="text"
               id="upiId"
@@ -110,7 +154,12 @@ function PaymentDetails() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="qrCode" className="block text-gray-700 font-medium mb-2">QR Code</label>
+            <label
+              htmlFor="qrCode"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              QR Code
+            </label>
             <input
               type="text"
               id="qrCode"

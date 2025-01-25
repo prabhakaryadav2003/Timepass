@@ -1,43 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+
+import Navbar from "../components/NavBar";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     // Basic validation for email and password
     if (!email || !password) {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
       return;
     }
 
     // Mock login logic
-    if (email === 'user@example.com' && password === 'password123') {
+    if (email === "user@example.com" && password === "password123") {
       setIsLoggedIn(true);
-      console.log('Logged in successfully');
+      console.log("Logged in successfully");
     } else {
-      setError('Invalid email or password');
+      setError("Invalid email or password");
     }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <Navbar />
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Login</h2>
+        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+          Login
+        </h2>
         {isLoggedIn ? (
           <div className="text-center">
-            <p className="text-green-600 font-medium">You are logged in successfully!</p>
+            <p className="text-green-600 font-medium">
+              You are logged in successfully!
+            </p>
           </div>
         ) : (
           <form onSubmit={handleLogin}>
             {/* Email Field */}
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 font-medium mb-2"
+              >
                 Email
               </label>
               <input
@@ -53,7 +63,10 @@ function Login() {
 
             {/* Password Field */}
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+              <label
+                htmlFor="password"
+                className="block text-gray-700 font-medium mb-2"
+              >
                 Password
               </label>
               <input
@@ -83,7 +96,10 @@ function Login() {
         {/* Forgot Password Link */}
         {!isLoggedIn && (
           <div className="mt-4 text-center">
-            <a href="/forgot-password" className="text-blue-600 hover:underline">
+            <a
+              href="/forgot-password"
+              className="text-blue-600 hover:underline"
+            >
               Forgot Password?
             </a>
           </div>
