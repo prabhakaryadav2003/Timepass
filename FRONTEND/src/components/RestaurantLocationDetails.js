@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
 
 function RestaurantLocationDetails() {
-  const [location, setLocation] = useState({ lat: 28.6448, lng: 77.2167 }); // Placeholder coordinates
   const [shopNo, setShopNo] = useState('');
   const [floor, setFloor] = useState('');
   const [area, setArea] = useState('');
@@ -25,32 +22,10 @@ function RestaurantLocationDetails() {
     console.log('Restaurant Location Details Submitted');
   };
 
-  const mapClickHandler = (event) => {
-    setLocation({
-      lat: event.latlng.lat,
-      lng: event.latlng.lng,
-    });
-  };
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-lg bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Restaurant Location Details</h2>
-
-        {/* Map Integration */}
-        <div className="mb-6">
-          <MapContainer
-            center={location}
-            zoom={13}
-            style={{ height: '300px', width: '100%', border: '2px solid #ddd', borderRadius: '8px' }}
-            onClick={mapClickHandler}
-          >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={location}>
-              <Popup>Restaurant Location</Popup>
-            </Marker>
-          </MapContainer>
-        </div>
 
         {/* Address Form */}
         <form onSubmit={handleSubmit}>
