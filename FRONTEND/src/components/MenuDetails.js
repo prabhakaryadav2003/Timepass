@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function RestaurantLocationDetails() {
+function MenuDetails() {
   const [restaurantImages, setRestaurantImages] = useState([]);
   const [foodImages, setFoodImages] = useState([]);
   const [menuImages, setMenuImages] = useState([]);
@@ -165,4 +165,4 @@ function RestaurantLocationDetails() {
   );
 }
 
-export default RestaurantLocationDetails;
+export default MenuDetails;
