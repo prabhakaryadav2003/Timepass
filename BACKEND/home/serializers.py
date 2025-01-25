@@ -1,3 +1,4 @@
+import re
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from .models import *
@@ -19,26 +20,41 @@ class RegistrationSerializer(serializers.ModelSerializer):
     def validate(self, data):
         if CustomUser.objects.filter(email=data['email']).exists():
             raise serializers.ValidationError({"message": "Email already exists"})
+        if re.match(r'^[6-9]\d{9}$', data['phone']) is None:
+            raise serializers.ValidationError({"message": "Phone number is invalid"})
         return data
 
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
-        fields = ['name', 'address', 'is_veg', 'phone', 'average_rating', 'description', 'image', 'table_ac', 'per_table_cost', 'open_time', 'close_time']
+        fields = '__all__'
+
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = '__all__'
 
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
-        fields = ['restaurant', 'is_veg', 'name', 'description', 'price', 'image']
+        ffields = '__all__'
 
 class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
-        fields = ['user', 'restaurant', 'table_no', 'no_of_person', 'booking_time', 'booking_date']
+        fields = '__all__'
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ['user', 'restaurant', 'rating', 'review']
+        fields = '__all__'
 
+class TableSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Table
+        fields = '__all__'
 
+class BankDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BankDetails
+        fields = '__all__'

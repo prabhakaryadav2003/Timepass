@@ -17,8 +17,8 @@ http://<your-domain>/api/
 ## **Authentication**
 | Method | Endpoint       | Description                  |
 |--------|----------------|------------------------------|
-| POST   | `/register/`   | Register a new user.         |
-| POST   | `/login/`      | Login an existing user.      |
+| POST   | `/auth/register/`   | Register a new user.         |
+| POST   | `/auth/login/`      | Login an existing user.      |
 
 ---
 
