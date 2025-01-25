@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import Home from "./pages/homepage/Home";
+import Home from "./pages/homepage/home";
 import ResturantPage from "./pages/resturantPage/resturantPage";
-
+import AddResturant from "./pages/addResturant";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 const App = () => {
   return (
     <Router>
@@ -11,7 +13,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resturant" element={<ResturantPage />} />
-        </Routes>
+          <Route path="/addresturant" element={<AddResturant />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          </Routes>
       </div>
     </Router>
   );

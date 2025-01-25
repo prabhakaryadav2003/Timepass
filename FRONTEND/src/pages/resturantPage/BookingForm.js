@@ -17,7 +17,6 @@ function BookingForm() {
       <h2 className="text-2xl font-semibold text-gray-800 mb-6">Booking Form</h2>
       <div className="bg-white shadow-lg rounded-lg p-6">
         <form>
-          {/* Date Picker */}
           <div className="mb-6">
             <label htmlFor="date" className="block text-gray-700 text-lg mb-2">Select Date</label>
             <input
@@ -29,7 +28,6 @@ function BookingForm() {
             />
           </div>
 
-          {/* Number of Guests */}
           <div className="mb-6">
             <label htmlFor="guests" className="block text-gray-700 text-lg mb-2">Number of Guests</label>
             <input
@@ -43,7 +41,6 @@ function BookingForm() {
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition duration-300"
@@ -52,7 +49,6 @@ function BookingForm() {
           </button>
         </form>
 
-        {/* Confirmation */}
         {selectedDate && numGuests && (
           <div className="mt-6 text-center text-gray-800">
             <p>Your booking for <span className="font-semibold">{numGuests} {numGuests > 1 ? 'guests' : 'guest'}</span> on <span className="font-semibold">{selectedDate}</span> is confirmed!</p>
