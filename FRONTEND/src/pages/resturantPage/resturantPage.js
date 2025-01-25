@@ -5,6 +5,7 @@ import Loader from "../../components/loading";
 import Carousel from "../../components/carousel/carousel";
 
 import imageData from "../../components/carousel/imageData";
+
 import Cusines from "../../components/cusines/cusines";
 import cusinesData from "../../components/cusines/data";
 
@@ -48,6 +49,7 @@ const ResturantPage = () => {
         </Carousel>
       )}
       <div className="flex flex-wrap lg:flex-nowrap w-full max-w-[95%] mt-8">
+        {/* Left Section */}
         <div className="flex-1 border border-none p-4 space-y-6">
           <Amenities />
 
@@ -60,7 +62,7 @@ const ResturantPage = () => {
               🕒
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 text-center">
+              <h3 className="text-lg font-semibold text-gray-800">
                 Opening Hours
               </h3>
               <p className="text-gray-700 font-medium">
@@ -68,7 +70,7 @@ const ResturantPage = () => {
               </p>
             </div>
           </div>
-          <div className="border border-none flex flex-col lg:flex-row w-full space-y-4 lg:space-y-0 lg:space-x-4">
+          <div className="border border-none flex flex-col lg:flex-row w-full space-y-4 lg:space-y-0 lg:space-x-4 mt-6">
             <div className="lg:w-1/3 w-full border rounded-xl bg-white">
               <Address
                 shopNumber="101"
@@ -86,6 +88,7 @@ const ResturantPage = () => {
         </div>
         <Modal isOpen={isModelOpen} onClose={() => setIsModelOpen(false)} />
 
+        {/* Right Section */}
         <div className="flex-1 lg:max-w-sm border border-none m-4">
           <div className="bg-gray-100">
             <RestaurantCard
@@ -97,6 +100,7 @@ const ResturantPage = () => {
               email={"random@gmail.com"}
             />
           </div>
+
         </div>
       </div>
     </div>

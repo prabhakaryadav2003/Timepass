@@ -1,13 +1,8 @@
-import {
-  FaLeaf,
-  FaDrumstickBite,
-  FaWifi,
-  FaSnowflake,
-} from "react-icons/fa";
+import { FaDrumstickBite, FaLeaf, FaWifi, FaSnowflake } from "react-icons/fa";
 
 const Amenities = () => {
   return (
-    <div className="ameneties border-none flex flex-col justify-center items-center p-6 bg-gray-50 rounded-xl shadow-md">
+    <div className="amenities border-none flex flex-col justify-center items-center p-6 bg-gray-50 rounded-xl shadow-md">
       <div className="text-2xl font-semibold uppercase text-gray-800 mb-4">
         Amenities
       </div>
