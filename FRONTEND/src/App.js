@@ -6,20 +6,23 @@ import ResturantPage from "./pages/resturantPage/resturantPage";
 import AddResturant from "./pages/addResturant";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { GlobalProvider } from "./components/context";
 const App = () => {
   return (
-    <Router>
-      <div className="">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/resturant" element={<ResturantPage />} />
-          <Route path="/addresturant" element={<AddResturant />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+    <GlobalProvider>
+      <Router>
+        <div className="">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/resturant" element={<ResturantPage />} />
+            <Route path="/addresturant" element={<AddResturant />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </GlobalProvider>
   );
 };
 
-export default App;
+export default App;

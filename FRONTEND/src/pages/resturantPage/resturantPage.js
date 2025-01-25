@@ -15,15 +15,12 @@ import Map from "../../components/map/map";
 
 import Address from "../../components/address";
 
+import { GlobalGlobalContext } from "../../components/context";
+import Modal from "../../components/modal";
+
 const ResturantPage = () => {
   const [loading, setLoading] = useState(true);
-
-  const comments = [
-    { name: "John Doe", comment: "The food was amazing, highly recommend!" },
-    { name: "Jane Smith", comment: "Lovely ambiance and great service." },
-    { name: "Alex Brown", comment: "The desserts here are to die for!" },
-  ];
-
+  const { isModelOpen, setIsModelOpen } = GlobalGlobalContext();
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -89,6 +86,7 @@ const ResturantPage = () => {
             </div>
           </div>
         </div>
+        <Modal isOpen={isModelOpen} onClose={() => setIsModelOpen(false)} />
 
         {/* Right Section */}
         <div className="flex-1 lg:max-w-sm border border-none m-4">
