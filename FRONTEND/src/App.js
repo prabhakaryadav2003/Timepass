@@ -1,23 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-// import AddRestaurantPage from "./components/AddRestaurentPage";
-import RestaurantInformation from "./components/RestaurantInformation";
-import RestaurantLocationDetails from "./components/RestaurantLocationDetails";
-import MenuDetails from "./components/MenuDetails"
-import TableDetails from "./components/TableDetails";
-import PaymentDetails from "./components/PaymentDetails";
-import BookingConfirmation from "./components/BookingConfirmation";
 
-// import Home from "./pages/homepage/Home";
+import Home from "./pages/homepage/Home";
+import ResturantPage from "./pages/resturantPage/resturantPage";
 
 const App = () => {
   return (
-    <div>
-      <BookingConfirmation/>
-    </div>
+    <Router>
+      <div className="">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/resturant" element={<ResturantPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
-export default App;
+export default App;
