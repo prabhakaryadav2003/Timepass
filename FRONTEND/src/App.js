@@ -1,18 +1,17 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import Home from './pages/homepage/home'
+import Home from "./pages/homepage/Home";
 
 const App = () => {
   return (
-    <div className="parent_container border border-black ">
-      <BrowserRouter>
+    <Router>
+      <div className="flex-grow p-6">
         <Routes>
-          <Route path="/" element={<Home />}>
-          </Route>
+          <Route path="/" element={<Home />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </Router>
   );
 };
 

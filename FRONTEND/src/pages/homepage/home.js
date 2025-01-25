@@ -1,16 +1,23 @@
-import React from "react";
-import Navbar from "../../components/navbar/navbar";
-import { NavbarProvider } from "../../components/navbar/context";
+import React from 'react';
+// import Header from './components/Header';
+import SearchBar from '../../components/SearchBar';
+import RestaurantCategories from '../../components/RestaurantCategories';
+import FeaturedRestaurants from '../../components/featuredRestaurants/FeaturedRestaurants';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/NavBar';
 
-// import BgVideo from '../../assets/video/BgVideo'
-const Home = () => {
+import restaurantsData from '../../components/featuredRestaurants/data'
+
+function Home() {
   return (
-    <div className=" border ">
-      <NavbarProvider>
-        <Navbar />
-      </NavbarProvider>
+    <div className="container-fluid">
+      <Navbar />
+      <SearchBar />
+      <RestaurantCategories />
+      <FeaturedRestaurants restaurants = {restaurantsData}/>
+      <Footer />
     </div>
   );
-};
+}
 
 export default Home;
