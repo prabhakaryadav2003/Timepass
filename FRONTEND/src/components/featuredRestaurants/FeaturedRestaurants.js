@@ -3,7 +3,7 @@ import React from "react";
 function FeaturedRestaurants({ restaurants }) {
   console.log(restaurants);
   return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 border border-black p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  p-6">
         {restaurants.map((restaurant, index) => (
           <div
             className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out"

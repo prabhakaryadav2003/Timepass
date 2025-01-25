@@ -52,7 +52,13 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 right-0 bg-white shadow-md md:hidden flex flex-col items-center space-y-4 py-4 transition-all duration-300 ease-in-out opacity-100 transform translate-y-0">
+        <div
+          className="absolute top-16 left-0 right-0 bg-white shadow-md md:hidden flex flex-col items-center space-y-4 py-4 transition-all duration-[2s] ease-out opacity-100 transform translate-y-4"
+          style={{
+            transform: isMenuOpen ? 'translateY(0)' : 'translateY(-10px)',
+            opacity: isMenuOpen ? 1 : 0,
+          }}
+        >
           <a href="/restaurant" className="text-gray-700 hover:text-gray-900 text-lg">
             Restaurant
           </a>
