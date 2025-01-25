@@ -42,7 +42,7 @@ function RestaurantLocationDetails() {
           <MapContainer
             center={location}
             zoom={13}
-            style={{ height: '300px', width: '100%' }}
+            style={{ height: '300px', width: '100%', border: '2px solid #ddd', borderRadius: '8px' }}
             onClick={mapClickHandler}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

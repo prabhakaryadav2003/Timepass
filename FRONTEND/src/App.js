@@ -5,13 +5,17 @@ import Signup from "./components/Signup";
 // import AddRestaurantPage from "./components/AddRestaurentPage";
 import RestaurantInformation from "./components/RestaurantInformation";
 import RestaurantLocationDetails from "./components/RestaurantLocationDetails";
+import MenuDetails from "./components/MenuDetails"
+import TableDetails from "./components/TableDetails";
+import PaymentDetails from "./components/PaymentDetails";
+import BookingConfirmation from "./components/BookingConfirmation";
 
 // import Home from "./pages/homepage/Home";
 
 const App = () => {
   return (
     <div>
-      <RestaurantLocationDetails/>
+      <BookingConfirmation/>
     </div>
   );
 };
