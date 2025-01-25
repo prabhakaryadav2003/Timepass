@@ -14,9 +14,12 @@ import Map from "../../components/map/map";
 
 import Address from "../../components/address";
 
+import { GlobalGlobalContext } from "../../components/context";
+import Modal from "../../components/modal";
+
 const ResturantPage = () => {
   const [loading, setLoading] = useState(true);
-
+  const { isModelOpen, setIsModelOpen } = GlobalGlobalContext();
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -81,6 +84,7 @@ const ResturantPage = () => {
             </div>
           </div>
         </div>
+        <Modal isOpen={isModelOpen} onClose={() => setIsModelOpen(false)} />
 
         <div className="flex-1 lg:max-w-sm border border-none m-4">
           <div className="bg-gray-100">

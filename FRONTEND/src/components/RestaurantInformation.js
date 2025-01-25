@@ -1,38 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-// Step 1: Restaurant Information Component
-
-function RestaurantInformation() {
-  const [restaurantName, setRestaurantName] = useState('');
-  const [ownerFirstName, setOwnerFirstName] = useState('');
-  const [ownerLastName, setOwnerLastName] = useState('');
-  const [ownerPhone, setOwnerPhone] = useState('');
-  const [restaurantEmail, setRestaurantEmail] = useState('');
-  const [restaurantPhone, setRestaurantPhone] = useState('');
-  const [error, setError] = useState('');
+function RestaurantInformation({ onSubmit }) {
+  const [restaurantName, setRestaurantName] = useState("");
+  const [ownerFirstName, setOwnerFirstName] = useState("");
+  const [ownerLastName, setOwnerLastName] = useState("");
+  const [ownerPhone, setOwnerPhone] = useState("");
+  const [restaurantEmail, setRestaurantEmail] = useState("");
+  const [restaurantPhone, setRestaurantPhone] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
-    // Validate fields
-    if (!restaurantName || !ownerFirstName || !ownerLastName || !ownerPhone || !restaurantEmail || !restaurantPhone) {
-      setError('Please fill in all fields');
+    if (
+      !restaurantName ||
+      !ownerFirstName ||
+      !ownerLastName ||
+      !ownerPhone ||
+      !restaurantEmail ||
+      !restaurantPhone
+    ) {
+      setError("Please fill in all fields");
       return;
     }
 
-    // Mock API call or further processing
-    console.log('Restaurant Information Submitted');
+    // Pass valid data to the parent component
+    onSubmit({
+      restaurantName,
+      ownerFirstName,
+      ownerLastName,
+      ownerPhone,
+      restaurantEmail,
+      restaurantPhone,
+    });
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-lg bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Restaurant Information</h2>
+        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+          Restaurant Information
+        </h2>
         <form onSubmit={handleSubmit}>
-          {/* Restaurant Name */}
           <div className="mb-4">
-            <label htmlFor="restaurantName" className="block text-gray-700 font-medium mb-2">Restaurant Name</label>
+            <label
+              htmlFor="restaurantName"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Restaurant Name
+            </label>
             <input
               type="text"
               id="restaurantName"
@@ -43,9 +60,13 @@ function RestaurantInformation() {
             />
           </div>
 
-          {/* Owner's First Name */}
           <div className="mb-4">
-            <label htmlFor="ownerFirstName" className="block text-gray-700 font-medium mb-2">Owner First Name</label>
+            <label
+              htmlFor="ownerFirstName"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Owner First Name
+            </label>
             <input
               type="text"
               id="ownerFirstName"
@@ -56,9 +77,13 @@ function RestaurantInformation() {
             />
           </div>
 
-          {/* Owner's Last Name */}
           <div className="mb-4">
-            <label htmlFor="ownerLastName" className="block text-gray-700 font-medium mb-2">Owner Last Name</label>
+            <label
+              htmlFor="ownerLastName"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Owner Last Name
+            </label>
             <input
               type="text"
               id="ownerLastName"
@@ -69,9 +94,13 @@ function RestaurantInformation() {
             />
           </div>
 
-          {/* Owner's Phone Number */}
           <div className="mb-4">
-            <label htmlFor="ownerPhone" className="block text-gray-700 font-medium mb-2">Owner's Phone Number</label>
+            <label
+              htmlFor="ownerPhone"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Owner's Phone Number
+            </label>
             <input
               type="text"
               id="ownerPhone"
@@ -82,9 +111,13 @@ function RestaurantInformation() {
             />
           </div>
 
-          {/* Restaurant Email */}
           <div className="mb-4">
-            <label htmlFor="restaurantEmail" className="block text-gray-700 font-medium mb-2">Restaurant Email</label>
+            <label
+              htmlFor="restaurantEmail"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Restaurant Email
+            </label>
             <input
               type="email"
               id="restaurantEmail"
@@ -95,9 +128,13 @@ function RestaurantInformation() {
             />
           </div>
 
-          {/* Restaurant Phone Number */}
           <div className="mb-4">
-            <label htmlFor="restaurantPhone" className="block text-gray-700 font-medium mb-2">Restaurant Phone Number</label>
+            <label
+              htmlFor="restaurantPhone"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Restaurant Phone Number
+            </label>
             <input
               type="text"
               id="restaurantPhone"
@@ -108,10 +145,8 @@ function RestaurantInformation() {
             />
           </div>
 
-          {/* Error Message */}
           {error && <div className="mb-4 text-red-600 text-sm">{error}</div>}
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
