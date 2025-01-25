@@ -6,7 +6,7 @@ function Login() {
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -16,15 +16,27 @@ function Login() {
       return;
     }
 
-    // Mock login logic
-    if (email === 'user@example.com' && password === 'password123') {
-      setIsLoggedIn(true);
-      console.log('Logged in successfully');
-    } else {
-      setError('Invalid email or password');
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/auth/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.access);
+        setIsLoggedIn(true);
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
     }
   };
-
+  
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
