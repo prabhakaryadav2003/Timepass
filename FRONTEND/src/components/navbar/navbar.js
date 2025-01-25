@@ -18,6 +18,7 @@ const Navbar = () => {
     const right = text ? location.right - 200 : location.right;
     const left = text ? location.left - 300 : location.left;
     openSubmenu(page, { top, bottom, right, left });
+    console.log('here')
   };
 
   const handleCloseSubmenu = (e) => {
@@ -35,7 +36,7 @@ const Navbar = () => {
           {navData.map((currentItem, index) => {
             const { page, links } = currentItem;
             return (
-              <li className="nav-item" key={index}>
+              <li className="nav-item cursor-pointer" key={index}>
                 {links.icon}
                 {links.url ? (
                   <a
@@ -55,7 +56,6 @@ const Navbar = () => {
               </li>
             );
           })}
-          <SearchInput />
         </ul>
       </nav>
 
@@ -63,9 +63,7 @@ const Navbar = () => {
         <div className="show-button  text-2xl" onClick={() => manageSideBar()}>
           <FiAlignJustify />
         </div>
-        <div className="max-w-[70%]">
-          <SearchInput />
-        </div>
+      
         <div
           className="user-account capitalize font-bold text-3xl flex flex-col justify-center items-center"
           onClick={(e) => displaySubmenu(e, "user")}>

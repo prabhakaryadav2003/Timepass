@@ -34,7 +34,6 @@ import {
         },
       ],
     },
-  scrollbars
     {
       page: "user",
       links: [{ label: "user account", icon: <FaHome /> }],
