@@ -8,13 +8,6 @@
   box-sizing: border-box;
 }
 
-body,
-html {
-  height: 100%;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-}
-
 .parent_container {
   position: relative;
   width: 100%;
@@ -30,4 +23,16 @@ html {
   object-fit: cover;
   z-index: -1;
   border: 2px solid green;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
 }
