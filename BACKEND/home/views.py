@@ -11,12 +11,14 @@ from .models import *
 
 # Create your views here.
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def login_view(request):
     """
     Authenticate the user and return a JWT token.
     """
-    email = request.data.get('email')
-    password = request.data.get('password')
+    data = JSONParser().parse(request)
+    email = data.get('email')
+    password = data.get('password')
 
     if not email or not password:
         return Response({"detail": "Email and password are required."}, status=status.HTTP_400_BAD_REQUEST)
@@ -32,6 +34,7 @@ def login_view(request):
         return Response({"detail": "Invalid credentials."}, status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def register(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
