@@ -35,9 +35,7 @@ const AddRestaurant = () => {
   const steps = [
     "Restaurant Info",
     "Location Details",
-    "Menu Details",
-    "Table Details",
-    "Payment Details",
+    "Menu Details and all"
   ];
 
   return (
@@ -63,19 +61,17 @@ const AddRestaurant = () => {
             />
           )}
           {step === 3 && (
-            <MenuDetails
-              onSubmit={(data) => handleFormSubmit("menuDetails", data)}
-            />
-          )}
-          {step === 4 && (
-            <TableDetails
-              onSubmit={(data) => handleFormSubmit("tableDetails", data)}
-            />
-          )}
-          {step === 5 && (
-            <PaymentDetails
-              onSubmit={(data) => handleFormSubmit("paymentDetails", data)}
-            />
+            <div className="border border-black">
+              <MenuDetails
+                onSubmit={(data) => handleFormSubmit("menuDetails", data)}
+              />
+              <TableDetails
+                onSubmit={(data) => handleFormSubmit("tableDetails", data)}
+              />
+              <PaymentDetails
+                onSubmit={(data) => handleFormSubmit("paymentDetails", data)}
+              />
+            </div>
           )}
         </div>
         <div className="flex justify-between items-center px-4 py-4">

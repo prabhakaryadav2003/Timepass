@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TableDetails from "./TableDetails"; // Assuming TableDetails is in a separate file
 
 function MenuDetails() {
   const [restaurantImages, setRestaurantImages] = useState([]);
@@ -16,8 +17,9 @@ function MenuDetails() {
     saturday: false,
     sunday: false,
   });
-  const [currentStep, setCurrentStep] = useState(1); // Track form step
-  const [progress, setProgress] = useState(0); // Track progress
+  const [currentStep, setCurrentStep] = useState(1);
+  const [progress, setProgress] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleCuisineSelect = (cuisine) => {
     setSelectedCuisines((prevCuisines) =>
@@ -40,10 +42,11 @@ function MenuDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Update the current step
     setCurrentStep(currentStep + 1);
-    // Update progress (assuming 3 steps)
-    setProgress(((currentStep + 1) / 3) * 100);
+    setProgress(((currentStep + 1) / 4) * 100); // Update progress (assuming 4 steps)
+    if (currentStep === 3) {
+      setIsSubmitted(true);
+    }
   };
 
   return (
@@ -67,7 +70,7 @@ function MenuDetails() {
         </div>
 
         {/* Form Steps */}
-        {currentStep === 1 && (
+        {currentStep === 1 && !isSubmitted && (
           <form onSubmit={handleSubmit}>
             {/* Restaurant Images */}
             <div className="mb-4">
@@ -130,11 +133,12 @@ function MenuDetails() {
           </form>
         )}
 
-        {currentStep === 2 && (
+        {currentStep === 2 && !isSubmitted && (
           <form onSubmit={handleSubmit}>
-            {/* Add more fields for next step */}
-            <h2>Step 2: Cuisine Selection</h2>
-            {/* Example fields for Step 2 */}
+            {/* Cuisine Selection */}
+            <h2 className="mb-4 text-xl font-medium">
+              Step 2: Cuisine Selection
+            </h2>
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">
                 Select up to 3 Cuisines
@@ -171,21 +175,21 @@ function MenuDetails() {
               </button>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
             >
-              Next
+              Save Details
             </button>
           </form>
         )}
 
-        {currentStep === 3 && (
+        {currentStep === 3 && !isSubmitted && (
           <form onSubmit={handleSubmit}>
-            {/* Add more fields for final step */}
-            <h2>Step 3: Set Operational Timings</h2>
-            {/* Example fields for Step 3 */}
+            {/* Operational Timings */}
+            <h2 className="mb-4 text-xl font-medium">
+              Step 3: Set Operational Timings
+            </h2>
             <div className="mb-4 grid grid-cols-2 gap-4">
               <div>
                 <label
@@ -219,7 +223,25 @@ function MenuDetails() {
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Days of Operation */}
+            <div className="mb-4">
+              <h3 className="text-lg font-medium mb-2">Days of Operation</h3>
+              {Object.keys(openDays).map((day) => (
+                <div key={day} className="flex items-center mb-2">
+                  <input
+                    type="checkbox"
+                    id={day}
+                    checked={openDays[day]}
+                    onChange={() => handleDayChange(day)}
+                    className="mr-2"
+                  />
+                  <label htmlFor={day} className="text-gray-700 capitalize">
+                    {day}
+                  </label>
+                </div>
+              ))}
+            </div>
+
             <button
               type="submit"
               className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
@@ -228,6 +250,8 @@ function MenuDetails() {
             </button>
           </form>
         )}
+
+        {isSubmitted && <TableDetails />}
       </div>
     </div>
   );
