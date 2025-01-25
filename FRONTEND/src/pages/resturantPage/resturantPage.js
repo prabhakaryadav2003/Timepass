@@ -6,11 +6,14 @@ import Carousel from "../../components/carousel/carousel";
 
 import imageData from "../../components/carousel/imageData";
 
+import Cusines from "../../components/cusines/cusines";
+import cusinesData from "../../components/cusines/data";
+
 import RestaurantCard from "../../components/resturantCardInfo";
 import Amenities from "../../components/amenites";
-import CommentsSection from "../../components/commentSection/comments";
+import Map from "../../components/map/map";
 
-import commentsData from "../../components/commentSection/data";
+import Address from "../../components/address";
 
 const ResturantPage = () => {
   const [loading, setLoading] = useState(true);
@@ -22,14 +25,13 @@ const ResturantPage = () => {
   ];
 
   useEffect(() => {
-    console.log("hora hai");
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
 
   return (
-    <div className="flex flex-col none-black h-full w-full p-0 items-center justify-center">
+    <div className="flex flex-col h-full w-full items-center">
       <Navbar />
       {loading ? (
         <Loader />
@@ -38,26 +40,32 @@ const ResturantPage = () => {
           {imageData.map((source, index) => (
             <div
               key={index}
-              className="w-[95vw] h-full phone-height-carousel flex-shrink-0 flex items-center justify-center z-1 mt-[5.5rem] none-black overflow-hidden make_reponsive"
+              className="w-[95vw] h-full flex-shrink-0 flex items-center justify-center z-1 mt-[5.5rem] overflow-hidden"
             >
               <img
                 src={source}
                 alt={`carousel-image-${index}`}
-                className="object-cover h-[38rem] w-full rounded-3xl z-1"
+                className="object-cover h-[38rem] w-full rounded-3xl"
               />
             </div>
           ))}
         </Carousel>
       )}
-      <div className="flex flex-row w-full m-auto w-full max-w-[95%] mt-[2rem]">
-        <div className="bottom border border-none w-full m-4">
+      <div className="flex flex-wrap lg:flex-nowrap w-full max-w-[95%] mt-8">
+        {/* Left Section */}
+        <div className="flex-1 border border-none p-4 space-y-6">
           <Amenities />
-          <div className="location border border-none p-4 rounded-xl bg-gray-100 shadow-md flex items-center gap-4 mt-[2rem]">
+
+          <div className="cusines">
+            <Cusines cusines={cusinesData} />
+          </div>
+
+          <div className="location border p-4 rounded-xl bg-gray-100 shadow-md flex items-center gap-4">
             <div className="flex items-center justify-center bg-blue-500 text-white h-12 w-12 rounded-full">
               🕒
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 text-center">
+              <h3 className="text-lg font-semibold text-gray-800">
                 Opening Hours
               </h3>
               <p className="text-gray-700 font-medium">
@@ -65,26 +73,25 @@ const ResturantPage = () => {
               </p>
             </div>
           </div>
-          <div className="address border border-none p-4 rounded-xl bg-gray-100 shadow-md flex items-start gap-4 mt-[2rem]">
-            <div className="flex items-center justify-center bg-green-500 text-white h-12 w-12 rounded-full">
-              📍
+          <div className="border border-none flex flex-col lg:flex-row w-full space-y-4 lg:space-y-0 lg:space-x-4 mt-6">
+            <div className="lg:w-1/3 w-full border rounded-xl bg-white">
+              <Address
+                shopNumber="101"
+                floorTower="2nd Floor, Tower A"
+                area="Downtown Avenue"
+                city="Mumbai"
+                landmark="Central Park"
+              />
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 text-center">
-                Address
-              </h3>
-              <p className="text-gray-700 font-medium">
-                123 Flavor Street, Foodie Town, FL 56789
-              </p>
-            </div>
-          </div>
-          <div className="map border border-none"></div>
 
-          <div className="comments border border-none p-4 rounded-xl bg-gray-100 shadow-md mt-[2rem]">
-            <CommentsSection  comments={commentsData}/>
+            <div className="lg:flex-1 w-full border rounded-xl">
+              <Map />
+            </div>
           </div>
         </div>
-        <div className="review border border-none m-4">
+
+        {/* Right Section */}
+        <div className="flex-1 lg:max-w-sm border border-none m-4">
           <div className="bg-gray-100">
             <RestaurantCard
               name="Delicious Bites"
@@ -92,8 +99,10 @@ const ResturantPage = () => {
               description="A cozy place to enjoy mouth-watering dishes."
               phone="+1 987 654 3210"
               rating={4.8}
+              email={"random@gmail.com"}
             />
           </div>
+
         </div>
       </div>
     </div>

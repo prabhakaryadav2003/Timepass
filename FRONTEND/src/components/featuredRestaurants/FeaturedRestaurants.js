@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router";
 
 function FeaturedRestaurants({ restaurants }) {
-  console.log(restaurants);
   return (
     <Link to="/resturant">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  p-6">
