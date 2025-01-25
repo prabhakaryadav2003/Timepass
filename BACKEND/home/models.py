@@ -94,7 +94,7 @@ class Table(models.Model):
     def __str__(self):
         return f'{self.restaurant.name} - {self.table_no}'
     
-class BankDetails(model.Models):
+class BankDetails(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='accounts')
     full_mane = models.CharField(max_length=100)
     account_no = models.CharField(max_length=20)
