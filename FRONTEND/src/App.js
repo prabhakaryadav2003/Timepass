@@ -6,7 +6,7 @@ import Home from "./pages/homepage/Home";
 const App = () => {
   return (
     <Router>
-      <div className="flex-grow p-6">
+      <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

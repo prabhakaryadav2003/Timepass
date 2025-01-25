@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import websiteLogo from '../assets/restaurant.png'
+import websiteLogo from '../assets/restaurant.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,7 +7,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="navbar bg-white shadow-md px-6 py-3 flex justify-between items-center">
+    <nav className="navbar fixed top-0 bg-white shadow-md px-6 py-3 flex justify-between items-center w-full">
       <div className="flex items-center space-x-3">
         <img
           src={websiteLogo}
@@ -52,7 +52,7 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 right-0 bg-white shadow-md md:hidden flex flex-col items-center space-y-4 py-4">
+        <div className="absolute top-16 left-0 right-0 bg-white shadow-md md:hidden flex flex-col items-center space-y-4 py-4 transition-all duration-300 ease-in-out opacity-100 transform translate-y-0">
           <a href="/restaurant" className="text-gray-700 hover:text-gray-900 text-lg">
             Restaurant
           </a>

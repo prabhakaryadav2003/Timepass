@@ -2,21 +2,25 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-8">
-      <div className="container mx-auto text-center space-y-4">
-        <div className="flex justify-center space-x-6">
-          <a href="#" className="hover:text-blue-400 transition duration-300">Terms of Service</a>
-          <a href="#" className="hover:text-blue-400 transition duration-300">Privacy Policy</a>
-          <a href="#" className="hover:text-blue-400 transition duration-300">Contact Us</a>
+    <footer className="bg-gray-900 text-white py-12">
+      <div className="container mx-auto text-center">
+        <div className="flex justify-center space-x-8 mb-8">
+          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium">Terms of Service</a>
+          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium">Privacy Policy</a>
+          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium">Contact Us</a>
         </div>
-
-        <div className="mt-6">
-          <a href="#" className="mx-4 hover:text-blue-400 transition duration-300">Facebook</a>
-          <a href="#" className="mx-4 hover:text-blue-400 transition duration-300">Twitter</a>
-          <a href="#" className="mx-4 hover:text-blue-400 transition duration-300">Instagram</a>
+        <div className="flex justify-center space-x-8 mb-8">
+          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl">
+            <i className="fab fa-facebook"></i>
+          </a>
+          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl">
+            <i className="fab fa-twitter"></i>
+          </a>
+          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl">
+            <i className="fab fa-instagram"></i>
+          </a>
         </div>
-
-        <div className="mt-6 text-gray-400 text-sm">
+        <div className="text-gray-500 text-sm">
           <p>&copy; 2025 WebsiteName. All rights reserved.</p>
         </div>
       </div>

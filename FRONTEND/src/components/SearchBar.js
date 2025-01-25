@@ -2,7 +2,7 @@ import React from "react";
 
 function SearchBar() {
   return (
-    <div className="my-6 px-4 md:px-8">
+    <div className="my-6 px-4 md:px-8 mt-[6rem]">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="w-full md:flex-1">
           <input
