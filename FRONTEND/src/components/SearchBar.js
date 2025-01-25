@@ -12,7 +12,7 @@ function SearchBar() {
           />
         </div>
 
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <select className="py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
             <option value="">Location</option>
             <option value="new-york">New York</option>
@@ -32,7 +32,7 @@ function SearchBar() {
             <option value="4">4 stars & above</option>
             <option value="3">3 stars & above</option>
           </select>
-        </div>
+        </div> */}
       </div>
     </div>
   );
