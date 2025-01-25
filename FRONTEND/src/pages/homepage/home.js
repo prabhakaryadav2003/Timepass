@@ -7,15 +7,28 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/NavBar";
 
 import restaurantsData from "../../components/featuredRestaurants/data";
-import cusinesData from "../../components/cusines/data"
+import cusinesData from "../../components/cusines/data";
+import Loader from "../../components/loading";
+
+import { useState,useEffect } from "react";
+
 
 function Home() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log("hora hai");
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   return (
     <div className="flex flex-col border border-black h-full w-full p-0">
       <Navbar />
       <SearchBar />
-      <RestaurantCategories categories={cusinesData}/>
-      <FeaturedRestaurants restaurants={restaurantsData} />
+      <RestaurantCategories categories={cusinesData} />
+      {loading?<Loader/>:<FeaturedRestaurants restaurants={restaurantsData} />}
       <Footer />
     </div>
   );

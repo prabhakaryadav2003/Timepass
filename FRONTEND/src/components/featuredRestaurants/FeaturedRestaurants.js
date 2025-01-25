@@ -1,9 +1,12 @@
 import React from "react";
 
+import { Link } from "react-router";
+
 function FeaturedRestaurants({ restaurants }) {
   console.log(restaurants);
   return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  p-6">
+    <Link to="/resturant">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4  p-6">
         {restaurants.map((restaurant, index) => (
           <div
             className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out"
@@ -23,6 +26,7 @@ function FeaturedRestaurants({ restaurants }) {
           </div>
         ))}
       </div>
+    </Link>
   );
 }
 
