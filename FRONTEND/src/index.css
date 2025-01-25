@@ -6,6 +6,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Iceland", serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .parent_container {
