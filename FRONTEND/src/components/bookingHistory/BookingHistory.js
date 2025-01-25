@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 
 // BookingHistory Component
 function BookingHistory({ bookings = [] }) {
   if (!bookings.length) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
-        <p className="text-gray-600 text-lg">No bookings available to display.</p>
+        <p className="text-gray-600 text-lg">
+          No bookings available to display.
+        </p>
       </div>
     );
   }
@@ -13,7 +15,9 @@ function BookingHistory({ bookings = [] }) {
   return (
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Booking History</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">
+          Booking History
+        </h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {bookings.map((booking) => (
             <div
@@ -21,7 +25,9 @@ function BookingHistory({ bookings = [] }) {
               className="bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between"
             >
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{booking.restaurantName}</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {booking.restaurantName}
+                </h3>
                 <p className="text-gray-600">
                   <strong>Date:</strong> {booking.date}
                 </p>
@@ -54,38 +60,4 @@ function BookingHistory({ bookings = [] }) {
   );
 }
 
-// Dummy Data
-const dummyBookings = [
-  {
-    id: 1,
-    restaurantName: 'The Gourmet Kitchen',
-    date: '2025-02-15',
-    time: '7:00 PM',
-    guests: 4,
-    onModify: (id) => console.log('Modify booking with ID:', id),
-    onCancel: (id) => console.log('Cancel booking with ID:', id),
-  },
-  {
-    id: 2,
-    restaurantName: 'Ocean Breeze',
-    date: '2025-03-01',
-    time: '6:00 PM',
-    guests: 2,
-    onModify: (id) => console.log('Modify booking with ID:', id),
-    onCancel: (id) => console.log('Cancel booking with ID:', id),
-  },
-  {
-    id: 3,
-    restaurantName: 'Mountain Retreat',
-    date: '2025-04-10',
-    time: '8:00 PM',
-    guests: 6,
-    onModify: (id) => console.log('Modify booking with ID:', id),
-    onCancel: (id) => console.log('Cancel booking with ID:', id),
-  },
-];
-
-// Export Component with Dummy Data for Testing
-export default function App() {
-  return <BookingHistory bookings={dummyBookings} />;
-}
+export default BookingHistory;
