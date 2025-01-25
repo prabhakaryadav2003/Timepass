@@ -1,12 +1,8 @@
 import {
     FaHome,
-    FaMobileAlt,
-    FaTshirt,
     FaHeart,
-    FaShoppingCart,
     FaSignInAlt,
     FaUserPlus,
-    FaBoxOpen,
     FaEnvelope,
     FaUser,
   } from "react-icons/fa";
@@ -38,7 +34,7 @@ import {
         },
       ],
     },
-  s
+  scrollbars
     {
       page: "user",
       links: [{ label: "user account", icon: <FaHome /> }],
