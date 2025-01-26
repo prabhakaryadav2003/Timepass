@@ -19,7 +19,7 @@ function UserProfile() {
         {/* Profile Image */}
         <div className="flex-shrink-0">
           <img
-            src={user.image}
+            src='https://t4.ftcdn.net/jpg/06/78/09/75/360_F_678097580_mgsNEISedI7fngOwIipYtEU0T6SN8qKv.jpg'
             alt="User Avatar"
             className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-xl"
           />
