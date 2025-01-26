@@ -2,16 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Iceland", serif;
-  font-weight: 300;
+  font-weight: 300; /* Lighter font weight for modern look */
   font-style: normal;
+  font-size: 18px; /* Set base font size */
 }
 
-.parent_container {
+body {
+  background-color: #f7f7f7; /* Lighter background color for a clean look */
+  color: #333; /* Darker text color for better readability */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+  color: #3498db; /* Primary hover color */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: rgba(52, 152, 219, 0.1); /* Light hover background */
+  transform: scale(1.05); /* Button hover effect */
+}
+
+input,
+textarea,
+select {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  font-size: 1rem;
+  outline: none;
+  border-radius: 0.375rem;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Focus glow effect */
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem; /* Rounded corners for images */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Custom classes */
+.parent-container {
   position: relative;
   width: 100%;
   height: 100%;
@@ -25,17 +105,92 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  border: 2px solid green;
+  filter: blur(5px); /* Added blur for a soft background effect */
 }
 
-::-webkit-scrollbar {
-  display: none;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem; /* Increased padding for better spacing */
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+.heading {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase; /* Uppercase for headers for more impact */
 }
 
-::-webkit-scrollbar-thumb {
-  background: transparent;
+.subheading {
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.text-primary {
+  color: #3498db;
+}
+
+.text-secondary {
+  color: #888;
+}
+
+.bg-primary {
+  background-color: #3498db;
+  color: #fff; /* Text color on primary background */
+  padding: 1rem 2rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s ease;
+}
+
+.bg-primary:hover {
+  background-color: #2980b9; /* Darker primary background on hover */
+}
+
+.bg-secondary {
+  background-color: #f4f4f4;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.border-radius {
+  border-radius: 0.375rem;
+}
+
+.shadow {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for modern feel */
+}
+
+.transition {
+  transition: all 0.3s ease;
+}
+
+/* New Class for Gradient Background */
+.bg-gradient {
+  background: linear-gradient(135deg, #3498db, #8e44ad);
+  color: white;
+  padding: 2rem;
+  border-radius: 0.375rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* New Class for Card Style */
+.card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }

@@ -8,7 +8,7 @@ import DisplayRestaurantReviews from "../components/DisplayRestaurantReviews";
 
 const ResturantAdmin = () => {
   return (
-    <div className="flex flex-col border border-black h-full w-full p-0">
+    <div className="flex flex-col border border-black h-full w-full p-32">
       <Navbar />
       <DisplayRestaurantInformation />
       <DisplayRestaurantLocation />

@@ -28,36 +28,44 @@ function RestaurantInformation({ restaurantId }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className="bg-gray-100 pt-24">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Restaurant Information</h2>
 
         {/* Restaurant Info Card */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Restaurant Details</h3>
-          
-          <div className="mb-4">
-            <strong>Restaurant Name:</strong> {restaurantData.restaurantName}
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
+          <h3 className="text-xl font-semibold text-gray-800 mb-6">Restaurant Details</h3>
+
+          <div className="space-y-4">
+            <div className="flex justify-between">
+              <strong className="text-gray-700">Restaurant Name:</strong>
+              <span>{restaurantData.restaurantName}</span>
+            </div>
+            <div className="flex justify-between">
+              <strong className="text-gray-700">Owner's First Name:</strong>
+              <span>{restaurantData.ownerFirstName}</span>
+            </div>
+            <div className="flex justify-between">
+              <strong className="text-gray-700">Owner's Last Name:</strong>
+              <span>{restaurantData.ownerLastName}</span>
+            </div>
+            <div className="flex justify-between">
+              <strong className="text-gray-700">Owner's Phone Number:</strong>
+              <span>{restaurantData.ownerPhoneNumber}</span>
+            </div>
+            <div className="flex justify-between">
+              <strong className="text-gray-700">Restaurant Email:</strong>
+              <span>{restaurantData.restaurantEmail}</span>
+            </div>
+            <div className="flex justify-between">
+              <strong className="text-gray-700">Restaurant Phone Number:</strong>
+              <span>{restaurantData.restaurantPhoneNumber}</span>
+            </div>
           </div>
-          <div className="mb-4">
-            <strong>Owner's First Name:</strong> {restaurantData.ownerFirstName}
-          </div>
-          <div className="mb-4">
-            <strong>Owner's Last Name:</strong> {restaurantData.ownerLastName}
-          </div>
-          <div className="mb-4">
-            <strong>Owner's Phone Number:</strong> {restaurantData.ownerPhoneNumber}
-          </div>
-          <div className="mb-4">
-            <strong>Restaurant Email:</strong> {restaurantData.restaurantEmail}
-          </div>
-          <div className="mb-4">
-            <strong>Restaurant Phone Number:</strong> {restaurantData.restaurantPhoneNumber}
-          </div>
-          
+
           <button
             onClick={handleEditClick}
-            className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+            className="mt-6 w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
           >
             Edit
           </button>

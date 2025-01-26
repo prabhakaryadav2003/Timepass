@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import websiteLogo from "../assets/restaurant.png";
+
+
 import { Link, useNavigate } from "react-router-dom";
 import { GlobalGlobalContext } from "../components/context";
 
@@ -25,7 +27,7 @@ const Navbar = () => {
   }, [isLoggedInGlobal]);
 
   return (
-    <nav className="navbar z-50 fixed top-0 bg-white shadow-md px-6 py-3 flex justify-between items-center w-full">
+    <nav className="navbar z-50 fixed top-0 left-0 right-0 bg-white shadow-md px-6 py-3 flex justify-between items-center w-full mx-auto">
       <Link to="/">
         <div className="flex items-center space-x-3">
           <img src={websiteLogo} alt="Website Logo" className="h-10 w-10" />
@@ -36,6 +38,7 @@ const Navbar = () => {
       </Link>
 
       <div className="hidden md:flex items-center space-x-8">
+
         {/* Conditional rendering based on login status */}
         {isLoggedInGlobal ? (
           <>
@@ -74,6 +77,7 @@ const Navbar = () => {
             </Link>
           </>
         )}
+
       </div>
 
       <div className="md:hidden flex items-center" onClick={toggleMenu}>

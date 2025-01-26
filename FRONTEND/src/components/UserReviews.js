@@ -10,24 +10,20 @@ function UserReviews() {
   ];
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 py-8">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">User Reviews</h2>
+    <div className="flex justify-center items-center bg-gray-100 pt-24">
+      <div className="w-full max-w-4xl bg-white shadow-2xl rounded-2xl p-8">
+        <h2 className="text-[22px] font-bold text-black mb-6 text-center">User Reviews</h2>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="flex justify-between items-center p-4 border-b border-gray-200 hover:bg-gray-50 transition duration-300 rounded-lg"
+              className="flex justify-between items-start p-6 bg-gray-50 rounded-xl shadow-md hover:shadow-lg transition duration-300"
             >
               {/* Hotel Name */}
               <div className="flex flex-col">
-                <span className="text-lg font-medium text-gray-800">{review.hotelName}</span>
-              </div>
-
-              {/* User Comment */}
-              <div className="text-gray-600 max-w-xl">
-                <p>{review.comment}</p>
+                <span className="text-[18px] font-bold text-black mb-1">{review.hotelName}</span>
+                <p className="text-gray-700 text-[14px]">{review.comment}</p>
               </div>
             </div>
           ))}

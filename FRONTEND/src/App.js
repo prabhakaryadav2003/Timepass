@@ -10,7 +10,7 @@ import UserDashboard from "./pages/userDashboard";
 import WebsiteAdmin from "./pages/WebsiteAdmin";
 import ResturantAdmin from "./pages/ResturantAdmin";
 import { GlobalProvider } from "./components/context";
-
+import Searchpage from "./pages/Searchpage";
 const App = () => {
   return (
     <GlobalProvider>
@@ -25,6 +25,7 @@ const App = () => {
             <Route path="/user" element={<UserDashboard />} />
             <Route path="/resturantUser" element={<WebsiteAdmin />} />
             <Route path="/ResturantAdmin" element={<ResturantAdmin />} />
+            <Route path="/Searchpage" element={<Searchpage />} />
           </Routes>
         </div>
       </Router>

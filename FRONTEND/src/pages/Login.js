@@ -44,16 +44,18 @@ function Login() {
     }
   };
 
+
   if (isLoggedInGlobal) {
     navigate("/"); // Redirect to home if logged in
     return null; // Prevents the login form from rendering after redirect
   }
 
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <Navbar />
-      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+      <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8">
+        <h2 className="text-[22px] font-bold text-black text-center mb-6">
           Login
         </h2>
         <form onSubmit={handleLogin}>
@@ -75,6 +77,7 @@ function Login() {
               required
             />
           </div>
+
 
           {/* Password Field */}
           <div className="mb-4">
@@ -109,6 +112,7 @@ function Login() {
 
         {/* Forgot Password Link */}
         {!isLoggedInGlobal && (
+
           <div className="mt-4 text-center">
             <a
               href="/forgot-password"

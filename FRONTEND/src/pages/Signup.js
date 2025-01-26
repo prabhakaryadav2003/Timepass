@@ -19,6 +19,18 @@ function SignupForm() {
       return;
     }
 
+
+    console.log("Signup successful, OTP sent to:", email);
+    setIsOtpSent(true);
+  };
+
+  const handleOtpVerification = () => {
+    if (otp === "1234") {
+      console.log("OTP verified");
+      setIsSignedUp(true);
+    } else {
+      setError("Invalid OTP. Please try again.");
+
     const formData = {
       first_name: firstName,
       last_name: lastName,
@@ -51,14 +63,17 @@ function SignupForm() {
       }
     } catch (err) {
       setError("An error occurred. Please try again later.");
+
     }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <Navbar />
+
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+
           Sign Up
         </h2>
         {isRegistered ? (
@@ -68,6 +83,7 @@ function SignupForm() {
             </p>
           </div>
         ) : (
+
           <form onSubmit={handleSignup}>
             {/* First Name Field */}
             <div className="mb-4">
@@ -175,10 +191,13 @@ function SignupForm() {
               Sign Up
             </button>
           </form>
+
         )}
       </div>
     </div>
   );
 }
 
+
 export default SignupForm;
+

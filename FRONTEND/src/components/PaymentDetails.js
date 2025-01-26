@@ -41,21 +41,20 @@ function PaymentDetails() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center bg-gray-100 pt-24">
       <div className="w-full max-w-lg bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
           Payment Details
         </h2>
         <form onSubmit={handleSubmit}>
           {/* Bank Details */}
-          <h3 className="text-xl font-semibold text-gray-700 mb-4">
+          <h3 className="text-xl font-bold text-gray-700 mb-4">
             Bank Details
           </h3>
-
           <div className="mb-4">
             <label
               htmlFor="fullName"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Full Name
             </label>
@@ -67,11 +66,10 @@ function PaymentDetails() {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="accountNumber"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Account Number
             </label>
@@ -83,11 +81,10 @@ function PaymentDetails() {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="ifscCode"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               IFSC Code
             </label>
@@ -99,11 +96,10 @@ function PaymentDetails() {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="bankName"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Bank Name
             </label>
@@ -115,11 +111,10 @@ function PaymentDetails() {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="branchName"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Branch Name
             </label>
@@ -136,11 +131,10 @@ function PaymentDetails() {
           <h3 className="text-xl font-semibold text-gray-700 mb-4">
             UPI Details
           </h3>
-
           <div className="mb-4">
             <label
               htmlFor="upiId"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               UPI ID
             </label>
@@ -152,11 +146,10 @@ function PaymentDetails() {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="qrCode"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               QR Code
             </label>

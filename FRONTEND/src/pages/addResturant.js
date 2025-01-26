@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+
 import Navbar from "../components/NavBar";
 
 const RestaurantForm = () => {
+
   const [formData, setFormData] = useState({
     name: "",
     isVeg: true,
@@ -55,9 +57,11 @@ const RestaurantForm = () => {
     }
   };
 
+
   return (
     <div className="bg-gray-50 min-h-screen flex items-center justify-center">
       <Navbar />
+
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-xl w-[80%] sm:w-[60%] md:w-[50%] lg:w-[40%]">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Add Restaurant</h2>
 
@@ -157,6 +161,7 @@ const RestaurantForm = () => {
           >
             Submit
           </button>
+
         </div>
       </form>
     </div>
