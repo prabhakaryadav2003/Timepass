@@ -7,8 +7,8 @@ import RemoveInappropriateReviews from "../components/RemoveInappropriateReview"
 
 const WebsiteAdmin = () => {
   return (
-    <div className="flex flex-col border border-black h-full w-full p-0">
-      <Navbar />
+    <div className="flex flex-col border border-black h-full w-full p-32">
+      <Navbar/>
       <ManageRestaurant/>
       <RemoveInappropriateReviews/>
     </div>

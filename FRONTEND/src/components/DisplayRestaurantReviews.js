@@ -17,7 +17,7 @@ function DisplayRestaurantReview({ restaurantId }) {
   }, [restaurantId]);
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 py-8">
+    <div className="flex justify-center items-center bg-gray-100 pt-24">
       <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">User Reviews</h2>
 

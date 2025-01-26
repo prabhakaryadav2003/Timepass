@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import websiteLogo from "../assets/restaurant.png";
-
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -9,7 +8,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="navbar z-50 fixed top-0 bg-white shadow-md px-6 py-3 flex justify-between items-center w-full">
+    <nav className="navbar z-50 fixed top-0 left-0 right-0 bg-white shadow-md px-6 py-3 flex justify-between items-center w-full mx-auto">
       <Link to="/">
         <div className="flex items-center space-x-3">
           <img src={websiteLogo} alt="Website Logo" className="h-10 w-10" />
@@ -22,37 +21,37 @@ const Navbar = () => {
       <div className="hidden md:flex items-center space-x-8">
         <Link
           to="/user"
-          className="text-gray-700 hover:text-gray-900 text-lg"
+          className="text-gray-700 hover:text-gray-900 text-lg font-bold"
         >
           User
         </Link>
         <Link
           to="/resturantUser"
-          className="text-gray-700 hover:text-gray-900 text-lg"
+          className="text-gray-700 hover:text-gray-900 text-lg font-bold"
         >
           Manager
         </Link>
         <Link
           to="/ResturantAdmin"
-          className="text-gray-700 hover:text-gray-900 text-lg"
+          className="text-gray-700 hover:text-gray-900 text-lg font-bold"
         >
           ResturantAdmin
         </Link>
         <Link
           to="/addresturant"
-          className="text-gray-700 hover:text-gray-900 text-lg"
+          className="text-gray-700 hover:text-gray-900 text-lg font-bold"
         >
           Add Restaurant
         </Link>
         <Link
           to="/login"
-          className="text-gray-700 hover:text-gray-900 text-lg transition duration-300 ease-in-out"
+          className="text-gray-700 hover:text-gray-900 text-lg transition duration-300 ease-in-out font-bold"
         >
           Login
         </Link>
         <Link
           to="/signup"
-          className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg"
+          className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg font-bold"
         >
           Signup
         </Link>

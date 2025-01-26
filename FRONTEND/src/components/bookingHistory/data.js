@@ -1,3 +1,5 @@
+import React from "react";
+
 // Dummy Data
 const dummyBookings = [
   {
@@ -28,3 +30,5 @@ const dummyBookings = [
     onCancel: (id) => console.log("Cancel booking with ID:", id),
   },
 ];
+
+export default dummyBookings;
