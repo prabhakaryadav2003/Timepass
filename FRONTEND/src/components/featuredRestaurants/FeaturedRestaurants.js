@@ -5,12 +5,11 @@ import { Link } from "react-router";
 function FeaturedRestaurants({ restaurants }) {
   return (
     <Link to="/resturant">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6">
         {restaurants.map((restaurant, index) => {
-          console.log(restaurant)
           return (
             <div
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out"
+              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-95 transition duration-300 ease-in-out"
               key={index}
             >
               <img

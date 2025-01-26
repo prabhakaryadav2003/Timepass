@@ -1,12 +1,9 @@
 import React from "react";
 import SearchBar from "../../components/SearchBar";
-import Cusines from "../../components/cusines/cusines";
 import FeaturedRestaurants from "../../components/featuredRestaurants/FeaturedRestaurants";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/NavBar";
 
-import restaurantsData from "../../components/featuredRestaurants/data";
-import cusinesData from "../../components/cusines/data";
 import Loader from "../../components/loading";
 
 import { useState, useEffect } from "react";
