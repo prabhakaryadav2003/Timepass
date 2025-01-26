@@ -4,13 +4,22 @@ const GlobalContext = React.createContext();
 
 const GlobalProvider = ({ children }) => {
   const [isModelOpen, setIsModelOpen] = useState(false);
+  const [isLoggedInGlobal, setIsLoggedInGlobal] = useState(false);
 
   const openModal = () => {
     setIsModelOpen(true);
   };
 
   return (
-    <GlobalContext.Provider value={{ isModelOpen, setIsModelOpen, openModal }}>
+    <GlobalContext.Provider
+      value={{
+        isModelOpen,
+        setIsModelOpen,
+        openModal,
+        isLoggedInGlobal,
+        setIsLoggedInGlobal,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );
