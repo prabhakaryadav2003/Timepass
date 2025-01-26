@@ -1,39 +1,48 @@
 import React, { useState } from "react";
 
 function RestaurantInformation({ onSubmit }) {
-  const [restaurantName, setRestaurantName] = useState("");
-  const [ownerFirstName, setOwnerFirstName] = useState("");
-  const [ownerLastName, setOwnerLastName] = useState("");
-  const [ownerPhone, setOwnerPhone] = useState("");
-  const [restaurantEmail, setRestaurantEmail] = useState("");
-  const [restaurantPhone, setRestaurantPhone] = useState("");
+  const [name, setname] = useState("");
+  const [phone, setphone] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    if (
-      !restaurantName ||
-      !ownerFirstName ||
-      !ownerLastName ||
-      !ownerPhone ||
-      !restaurantEmail ||
-      !restaurantPhone
-    ) {
+    if (!name || !phone) {
       setError("Please fill in all fields");
       return;
     }
 
-    // Pass valid data to the parent component
-    onSubmit({
-      restaurantName,
-      ownerFirstName,
-      ownerLastName,
-      ownerPhone,
-      restaurantEmail,
-      restaurantPhone,
-    });
+    const data = {
+      name,
+      phone,
+    };
+
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        "http://192.168.22.92:8000/api/restaurants/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (response.ok) {
+        const responseData = await response.json();
+        onSubmit(responseData);
+      } else {
+        setError("Failed to submit the form. Please try again later.");
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again later.");
+    }
   };
 
   return (
@@ -45,13 +54,16 @@ function RestaurantInformation({ onSubmit }) {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
+
               htmlFor="restaurantName"
               className="block text-gray-700 mb-2 font-bold"
+
             >
               Restaurant Name
             </label>
             <input
               type="text"
+
               id="restaurantName"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
               value={restaurantName}
@@ -121,26 +133,29 @@ function RestaurantInformation({ onSubmit }) {
             <input
               type="email"
               id="restaurantEmail"
+
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-              value={restaurantEmail}
-              onChange={(e) => setRestaurantEmail(e.target.value)}
+              value={name}
+              onChange={(e) => setname(e.target.value)}
               required
             />
           </div>
 
           <div className="mb-4">
             <label
+
               htmlFor="restaurantPhone"
               className="block text-gray-700 font-bold mb-2"
+
             >
               Restaurant Phone Number
             </label>
             <input
               type="text"
-              id="restaurantPhone"
+              id="phone"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-              value={restaurantPhone}
-              onChange={(e) => setRestaurantPhone(e.target.value)}
+              value={phone}
+              onChange={(e) => setphone(e.target.value)}
               required
             />
           </div>

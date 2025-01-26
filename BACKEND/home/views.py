@@ -48,16 +48,19 @@ def register(request):
 
 
 # Restaurants
-@api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-def restaurant_list_create(request):
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def restaurant_list(request):
     if request.method == 'GET':
         restaurants = Restaurant.objects.all()
         serializer = RestaurantSerializer(restaurants, many=True)
         return Response(serializer.data)
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def restaurant_create(request):
     if request.method == 'POST':
-        data = request.data
+        data = JSONParser().parse(request)
         data['owner'] = request.user.id  # Set the owner as the logged-in user
         serializer = RestaurantSerializer(data=data)
         if serializer.is_valid():
@@ -75,18 +78,19 @@ def restaurant_detail_update_delete(request, pk):
     try:
         restaurant = Restaurant.objects.get(pk=pk)
     except Restaurant.DoesNotExist:
-        return Response({'error': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'detail': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
 
     # Check object-level permission
     if not is_owner(request.user, restaurant):
-        return Response({'error': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
+        return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
 
     if request.method == 'GET':
         serializer = RestaurantSerializer(restaurant)
         return Response(serializer.data)
 
     if request.method == 'PUT':
-        serializer = RestaurantSerializer(restaurant, data=request.data)
+        data = JSONParser().parse(request)
+        serializer = RestaurantSerializer(restaurant, data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -104,10 +108,10 @@ def address_list_create(request, restaurant_pk):
     try:
         restaurant = Restaurant.objects.get(pk=restaurant_pk)
     except Restaurant.DoesNotExist:
-        return Response({'error': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'detail': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
 
     if not is_owner(request.user, restaurant):
-        return Response({'error': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
+        return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
 
     if request.method == 'GET':
         addresses = restaurant.addresses.all()
@@ -115,7 +119,7 @@ def address_list_create(request, restaurant_pk):
         return Response(serializer.data)
 
     if request.method == 'POST':
-        data = request.data
+        data = JSONParser().parse(request)
         data['restaurant'] = restaurant.id
         serializer = AddressSerializer(data=data)
         if serializer.is_valid():
@@ -131,10 +135,10 @@ def menu_list_create(request, restaurant_pk):
     try:
         restaurant = Restaurant.objects.get(pk=restaurant_pk)
     except Restaurant.DoesNotExist:
-        return Response({'error': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'detail': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
 
     if not is_owner(request.user, restaurant):
-        return Response({'error': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
+        return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
 
     if request.method == 'GET':
         menus = restaurant.menus.all()
@@ -176,10 +180,10 @@ def booking_detail_update_delete(request, pk):
     try:
         booking = Booking.objects.get(pk=pk)
     except Booking.DoesNotExist:
-        return Response({'error': 'Booking not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'detail': 'Booking not found'}, status=status.HTTP_404_NOT_FOUND)
 
     if booking.user != request.user:
-        return Response({'error': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
+        return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
 
     if request.method == 'GET':
         serializer = BookingSerializer(booking)
@@ -204,7 +208,7 @@ def review_list_create(request, restaurant_pk):
     try:
         restaurant = Restaurant.objects.get(pk=restaurant_pk)
     except Restaurant.DoesNotExist:
-        return Response({'error': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'detail': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         reviews = restaurant.reviews.all()

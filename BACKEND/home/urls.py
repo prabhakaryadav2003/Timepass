@@ -7,7 +7,8 @@ urlpatterns = [
     path('auth/register/', register, name='register'),
 
     # Restaurants
-    path('restaurants/', restaurant_list_create, name='restaurant_list_create'),
+    path('restaurants/', restaurant_list, name='restaurant_list'),
+    path('restaurants/add/', restaurant_create, name='restaurant_create'),
     path('restaurants/<int:pk>/', restaurant_detail_update_delete, name='restaurant_detail_update_delete'),
 
     # Addresses

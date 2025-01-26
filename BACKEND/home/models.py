@@ -22,7 +22,7 @@ class Restaurant(models.Model):
     phone = models.CharField(max_length=10)
     average_rating = models.FloatField(null=True, blank=True)
     description = models.TextField(blank=True)
-    restaurant_image = models.ImageField(upload_to='restaurant_images/', blank=True, null=True)
+    restaurant_image_url = models.CharField(blank=True, null=True, max_length=200)
     food_image = models.ImageField(upload_to='food_images/', blank=True, null=True)
     other_image = models.ImageField(upload_to='other_images/', blank=True, null=True)
     open_time = models.TimeField()

@@ -1,11 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import websiteLogo from "../assets/restaurant.png";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+import { GlobalGlobalContext } from "../components/context";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isLoggedInGlobal, setIsLoggedInGlobal } = GlobalGlobalContext();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedInGlobal(false);
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedInGlobal(true);
+    }
+  }, [isLoggedInGlobal]);
 
   return (
     <nav className="navbar z-50 fixed top-0 left-0 right-0 bg-white shadow-md px-6 py-3 flex justify-between items-center w-full mx-auto">
@@ -19,42 +36,55 @@ const Navbar = () => {
       </Link>
 
       <div className="hidden md:flex items-center space-x-8">
-        <Link
-          to="/user"
-          className="text-gray-700 hover:text-gray-900 text-lg font-bold"
-        >
-          User
-        </Link>
-        <Link
-          to="/resturantUser"
-          className="text-gray-700 hover:text-gray-900 text-lg font-bold"
-        >
-          Manager
-        </Link>
-        <Link
-          to="/ResturantAdmin"
-          className="text-gray-700 hover:text-gray-900 text-lg font-bold"
-        >
-          ResturantAdmin
-        </Link>
-        <Link
-          to="/addresturant"
-          className="text-gray-700 hover:text-gray-900 text-lg font-bold"
-        >
-          Add Restaurant
-        </Link>
-        <Link
-          to="/login"
-          className="text-gray-700 hover:text-gray-900 text-lg transition duration-300 ease-in-out font-bold"
-        >
-          Login
-        </Link>
-        <Link
-          to="/signup"
-          className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg font-bold"
-        >
-          Signup
-        </Link>
+        {isLoggedInGlobal ? (
+          <>
+            <Link
+              to="/user"
+              className="text-gray-700 hover:text-gray-900 text-lg"
+            >
+              User
+            </Link>
+            <Link
+              to="/addresturant"
+              className="text-gray-700 hover:text-gray-900 text-lg"
+            >
+              Add Restaurant
+            </Link>
+            <Link
+              to="/websiteadmin"
+              className="text-gray-700 hover:text-gray-900 text-lg"
+            >
+              Website Admin
+            </Link>
+            <Link
+              to="/ResturantAdmin"
+              className="text-gray-700 hover:text-gray-900 text-lg"
+            >
+              Resturant Admin
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="text-gray-700 hover:text-gray-900 text-lg"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className="text-gray-700 hover:text-gray-900 text-lg"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg"
+            >
+              Signup
+            </Link>
+          </>
+        )}
       </div>
 
       <div className="md:hidden flex items-center" onClick={toggleMenu}>
@@ -84,24 +114,55 @@ const Navbar = () => {
             opacity: isMenuOpen ? 1 : 0,
           }}
         >
-          <Link
-            to="/addrestaurant"
-            className="text-gray-700 hover:text-gray-900 text-lg"
-          >
-            Add Restaurant
-          </Link>
-          <a
-            href="/login"
-            className="text-gray-700 hover:text-gray-900 text-lg"
-          >
-            Login
-          </a>
-          <a
-            href="/signup"
-            className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg"
-          >
-            Signup
-          </a>
+          {isLoggedInGlobal ? (
+            <>
+              <Link
+                to="/user"
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                User
+              </Link>
+              <Link
+                to="/addresturant"
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                Add Restaurant
+              </Link>
+              <Link
+                to="/websiteadmin"
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                Website Admin
+              </Link>
+              <Link
+                to="/ResturantAdmin"
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                Resturant Admin
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg"
+              >
+                Signup
+              </Link>
+            </>
+          )}
         </div>
       )}
     </nav>
