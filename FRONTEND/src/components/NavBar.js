@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import websiteLogo from "../assets/restaurant.png";
 
-
 import { Link, useNavigate } from "react-router-dom";
 import { GlobalGlobalContext } from "../components/context";
 
@@ -14,15 +13,14 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setIsLoggedInGlobal(false); // Update global state to reflect logout
-    navigate("/login"); // Redirect to login page
+    setIsLoggedInGlobal(false);
+    navigate("/login");
   };
 
-  // Check for token in localStorage when the component mounts
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setIsLoggedInGlobal(true); // If token exists, the user is logged in
+      setIsLoggedInGlobal(true);
     }
   }, [isLoggedInGlobal]);
 
@@ -38,8 +36,6 @@ const Navbar = () => {
       </Link>
 
       <div className="hidden md:flex items-center space-x-8">
-
-        {/* Conditional rendering based on login status */}
         {isLoggedInGlobal ? (
           <>
             <Link
@@ -53,6 +49,18 @@ const Navbar = () => {
               className="text-gray-700 hover:text-gray-900 text-lg"
             >
               Add Restaurant
+            </Link>
+            <Link
+              to="/websiteadmin"
+              className="text-gray-700 hover:text-gray-900 text-lg"
+            >
+              Website Admin
+            </Link>
+            <Link
+              to="/ResturantAdmin"
+              className="text-gray-700 hover:text-gray-900 text-lg"
+            >
+              Resturant Admin
             </Link>
             <button
               onClick={handleLogout}
@@ -77,7 +85,6 @@ const Navbar = () => {
             </Link>
           </>
         )}
-
       </div>
 
       <div className="md:hidden flex items-center" onClick={toggleMenu}>
@@ -107,7 +114,6 @@ const Navbar = () => {
             opacity: isMenuOpen ? 1 : 0,
           }}
         >
-          {/* Conditional rendering for mobile menu */}
           {isLoggedInGlobal ? (
             <>
               <Link
@@ -115,6 +121,24 @@ const Navbar = () => {
                 className="text-gray-700 hover:text-gray-900 text-lg"
               >
                 User
+              </Link>
+              <Link
+                to="/addresturant"
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                Add Restaurant
+              </Link>
+              <Link
+                to="/websiteadmin"
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                Website Admin
+              </Link>
+              <Link
+                to="/ResturantAdmin"
+                className="text-gray-700 hover:text-gray-900 text-lg"
+              >
+                Resturant Admin
               </Link>
               <button
                 onClick={handleLogout}

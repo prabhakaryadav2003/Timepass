@@ -5,7 +5,7 @@ const GlobalContext = React.createContext();
 const GlobalProvider = ({ children }) => {
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [isLoggedInGlobal, setIsLoggedInGlobal] = useState(false);
-
+  const [userData] = useState(null);
   const openModal = () => {
     setIsModelOpen(true);
   };
