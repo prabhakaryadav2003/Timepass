@@ -51,11 +51,11 @@ function ManageRestaurant() {
         restaurants.map((restaurant) =>
           restaurant.id === id
             ? {
-                ...restaurant,
-                name: updatedName,
-                location: updatedLocation,
-                cuisines: updatedCuisines,
-              }
+              ...restaurant,
+              name: updatedName,
+              location: updatedLocation,
+              cuisines: updatedCuisines,
+            }
             : restaurant
         )
       );
@@ -65,12 +65,12 @@ function ManageRestaurant() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className="bg-gray-100 pt-24">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Manage Restaurants</h2>
 
         {/* Add Restaurant Form */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Add New Restaurant</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <input
@@ -80,7 +80,7 @@ function ManageRestaurant() {
               onChange={(e) =>
                 setNewRestaurant({ ...newRestaurant, name: e.target.value })
               }
-              className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+              className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
             <input
               type="text"
@@ -89,7 +89,7 @@ function ManageRestaurant() {
               onChange={(e) =>
                 setNewRestaurant({ ...newRestaurant, location: e.target.value })
               }
-              className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+              className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
             <input
               type="text"
@@ -98,7 +98,7 @@ function ManageRestaurant() {
               onChange={(e) =>
                 setNewRestaurant({ ...newRestaurant, cuisines: e.target.value })
               }
-              className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+              className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
             <input
               type="text"
@@ -107,7 +107,7 @@ function ManageRestaurant() {
               onChange={(e) =>
                 setNewRestaurant({ ...newRestaurant, image: e.target.value })
               }
-              className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+              className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
           <button
@@ -119,20 +119,21 @@ function ManageRestaurant() {
         </div>
 
         {/* Restaurant Table */}
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <table className="min-w-full table-auto border-collapse">
             <thead className="bg-gray-200">
               <tr>
-                <th className="px-6 py-3 text-left text-sm font-medium text-gray-800">Image</th>
-                <th className="px-6 py-3 text-left text-sm font-medium text-gray-800">Name</th>
-                <th className="px-6 py-3 text-left text-sm font-medium text-gray-800">Location</th>
-                <th className="px-6 py-3 text-left text-sm font-medium text-gray-800">Cuisines</th>
-                <th className="px-6 py-3 text-center text-sm font-medium text-gray-800">Actions</th>
+                <th className="px-6 py-3 text-left font-bold text-gray-800">Image</th>
+                <th className="px-6 py-3 text-left font-bold text-gray-800">Name</th>
+                <th className="px-6 py-3 text-left font-bold text-gray-800">Location</th>
+                <th className="px-6 py-3 text-left font-bold text-gray-800">Cuisines</th>
+                <th className="px-6 py-3 text-center font-bold text-gray-800">Actions</th>
               </tr>
             </thead>
+
             <tbody>
               {restaurants.map((restaurant) => (
-                <tr key={restaurant.id} className="border-t">
+                <tr key={restaurant.id} className="border-t hover:bg-gray-100">
                   <td className="px-6 py-4">
                     <img
                       src={restaurant.image}

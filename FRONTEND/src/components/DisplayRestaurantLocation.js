@@ -28,12 +28,12 @@ function DisplayRestaurantLocation({ restaurantId }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className="bg-gray-100 pt-24">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Restaurant Location</h2>
 
         {/* Map Integration */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Map View</h3>
           <iframe
             src={restaurantLocation.mapUrl}
@@ -46,23 +46,23 @@ function DisplayRestaurantLocation({ restaurantId }) {
         </div>
 
         {/* Address Details */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Restaurant Address</h3>
 
           <div className="mb-4">
-            <strong>Shop No:</strong> {restaurantLocation.shopNo}
+            <strong className="text-gray-700">Shop No:</strong> {restaurantLocation.shopNo}
           </div>
           <div className="mb-4">
-            <strong>Floor / Tower:</strong> {restaurantLocation.floorTower}
+            <strong className="text-gray-700">Floor / Tower:</strong> {restaurantLocation.floorTower}
           </div>
           <div className="mb-4">
-            <strong>Area / Sector / Locality:</strong> {restaurantLocation.area}
+            <strong className="text-gray-700">Area / Sector / Locality:</strong> {restaurantLocation.area}
           </div>
           <div className="mb-4">
-            <strong>City:</strong> {restaurantLocation.city}
+            <strong className="text-gray-700">City:</strong> {restaurantLocation.city}
           </div>
           <div className="mb-4">
-            <strong>Nearby Landmark:</strong> {restaurantLocation.nearbyLandmark}
+            <strong className="text-gray-700">Nearby Landmark:</strong> {restaurantLocation.nearbyLandmark}
           </div>
 
           <button
