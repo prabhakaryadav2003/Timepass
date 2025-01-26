@@ -72,22 +72,29 @@ def restaurant_create(request):
 def is_owner(user, obj):
     return obj.owner == user
 
-@api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
-def restaurant_detail_update_delete(request, pk):
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def restaurant_detail(request, pk):
     try:
         restaurant = Restaurant.objects.get(pk=pk)
     except Restaurant.DoesNotExist:
         return Response({'detail': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
 
-    # Check object-level permission
-    if not is_owner(request.user, restaurant):
-        return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
-
     if request.method == 'GET':
         serializer = RestaurantSerializer(restaurant)
         return Response(serializer.data)
 
+@api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
+def restaurant_update_delete(request, pk):
+    try:
+        restaurant = Restaurant.objects.get(pk=pk)
+    except Restaurant.DoesNotExist:
+        return Response({'detail': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+        # Check object-level permission
+    if not is_owner(request.user, restaurant):
+        return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
+    
     if request.method == 'PUT':
         data = JSONParser().parse(request)
         serializer = RestaurantSerializer(restaurant, data=data)
@@ -102,21 +109,39 @@ def restaurant_detail_update_delete(request, pk):
 
 
 # Address
-@api_view(['POST', 'GET'])
-@permission_classes([IsAuthenticated])
-def address_list_create(request, restaurant_pk):
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def address_list(request, restaurant_pk):
     try:
         restaurant = Restaurant.objects.get(pk=restaurant_pk)
     except Restaurant.DoesNotExist:
         return Response({'detail': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
 
-    if not is_owner(request.user, restaurant):
-        return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
-
     if request.method == 'GET':
         addresses = restaurant.addresses.all()
         serializer = AddressSerializer(addresses, many=True)
         return Response(serializer.data)
+
+# Address
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def address_search(request, city):
+    
+    if request.method == 'GET':
+        addresses = Address.objects.filter(city__icontains=city)
+        serializer = AddressSerializer(addresses, many=True)
+        return Response(serializer.data)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def address_create(request, restaurant_pk):
+    try:
+        restaurant = Restaurant.objects.get(pk=restaurant_pk)
+    except Restaurant.DoesNotExist:
+        return Response({'detail': 'Restaurant not found'}, status=status.HTTP_404_NOT_FOUND)
+    
+    if not is_owner(request.user, restaurant):
+        return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
 
     if request.method == 'POST':
         data = JSONParser().parse(request)

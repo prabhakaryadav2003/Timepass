@@ -18,17 +18,29 @@ import Address from "../../components/address";
 import { GlobalGlobalContext } from "../../components/context";
 import Modal from "../../components/modal";
 
-const ResturantPage = () => {
+const RestaurantPage = () => {
   const [loading, setLoading] = useState(true);
+
   const { isModelOpen, setIsModelOpen, restData } = GlobalGlobalContext();
   const [currentItem, setCurrentItem] = useState(null);
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
 
-  console.log("this is the current time", restData);
+
+  const handleWhatsAppClick = (phone) => {
+    const whatsappUrl = `https://wa.me/${phone.replace(/[^\d]/g, "")}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  const handleEmailClick = (email) => {
+    const mailtoUrl = `mailto:${email}`;
+    window.location.href = mailtoUrl;
+  };
+
 
   return (
     <div className="flex flex-col h-full w-full items-center">
@@ -99,9 +111,11 @@ const ResturantPage = () => {
               name="Delicious Bites"
               owner="Jane Smith"
               description="A cozy place to enjoy mouth-watering dishes."
-              phone="+1 987 654 3210"
+              phone="+19876543210"
               rating={4.8}
-              email={"random@gmail.com"}
+              email="random@gmail.com"
+              onPhoneClick={handleWhatsAppClick}
+              onEmailClick={handleEmailClick}
             />
           </div>
         </div>
@@ -110,4 +124,4 @@ const ResturantPage = () => {
   );
 };
 
-export default ResturantPage;
+export default RestaurantPage;
