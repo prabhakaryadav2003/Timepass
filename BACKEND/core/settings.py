@@ -45,6 +45,8 @@ EXTERNAL_APPS = [
     'rest_framework.authtoken',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
+    'search',
+    'django_elasticsearch_dsl',
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
@@ -154,3 +156,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 #    'http://192.168.22.130',
 #    'https://yourfrontenddomain.com',
 #]
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://localhost:9200',  # Make sure to include the 'http://' scheme
+    },
+}
