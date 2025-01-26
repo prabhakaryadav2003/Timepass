@@ -37,7 +37,7 @@ function RestaurantInformation({ onSubmit }) {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center bg-gray-100 pt-24">
       <div className="w-full max-w-lg bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
           Restaurant Information
@@ -46,7 +46,7 @@ function RestaurantInformation({ onSubmit }) {
           <div className="mb-4">
             <label
               htmlFor="restaurantName"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 mb-2 font-bold"
             >
               Restaurant Name
             </label>
@@ -63,7 +63,7 @@ function RestaurantInformation({ onSubmit }) {
           <div className="mb-4">
             <label
               htmlFor="ownerFirstName"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Owner First Name
             </label>
@@ -80,7 +80,7 @@ function RestaurantInformation({ onSubmit }) {
           <div className="mb-4">
             <label
               htmlFor="ownerLastName"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Owner Last Name
             </label>
@@ -97,7 +97,7 @@ function RestaurantInformation({ onSubmit }) {
           <div className="mb-4">
             <label
               htmlFor="ownerPhone"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Owner's Phone Number
             </label>
@@ -114,7 +114,7 @@ function RestaurantInformation({ onSubmit }) {
           <div className="mb-4">
             <label
               htmlFor="restaurantEmail"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Restaurant Email
             </label>
@@ -131,7 +131,7 @@ function RestaurantInformation({ onSubmit }) {
           <div className="mb-4">
             <label
               htmlFor="restaurantPhone"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-gray-700 font-bold mb-2"
             >
               Restaurant Phone Number
             </label>

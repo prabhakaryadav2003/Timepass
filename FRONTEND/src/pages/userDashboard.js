@@ -12,12 +12,12 @@ import ManageRestaurant from "../components/ManageRestaurant";
 
 const UserDashboard = () => {
   return (
-    <div className="flex flex-col border border-black h-full w-full p-0">
+    <div className="flex flex-col border border-black h-full w-full p-32">
       <Navbar />
       <UserProfile />
-      <UserReviews />
       <BookingHistory bookings={BookingData} />
       <UserFavourite favourites={UserFavData} />
+      <UserReviews />
     </div>
   );
 };

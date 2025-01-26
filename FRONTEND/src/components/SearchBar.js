@@ -7,7 +7,7 @@ function SearchBar() {
         <div className="w-full md:flex-1">
           <input
             type="text"
-            className="w-full py-3 px-5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full py-3 px-5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 "
             placeholder="Search for restaurants..."
           />
         </div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Navbar from "../components/NavBar";
 
 function Login() {
@@ -12,7 +11,6 @@ function Login() {
     e.preventDefault();
     setError("");
 
-    // Basic validation for email and password
     if (!email || !password) {
       setError("Please fill in all fields");
       return;
@@ -38,12 +36,12 @@ function Login() {
       setError('An error occurred. Please try again later.');
     }
   };
-  
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <Navbar />
-      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+      <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8">
+        <h2 className="text-[22px] font-bold text-black text-center mb-6">
           Login
         </h2>
         {isLoggedIn ? (
@@ -58,7 +56,7 @@ function Login() {
             <div className="mb-4">
               <label
                 htmlFor="email"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-[18px] font-bold text-black mb-2"
               >
                 Email
               </label>
@@ -73,11 +71,10 @@ function Login() {
               />
             </div>
 
-            {/* Password Field */}
             <div className="mb-4">
               <label
                 htmlFor="password"
-                className="block text-gray-700 font-medium mb-2"
+                className="block text-[18px] font-bold text-black mb-2"
               >
                 Password
               </label>
@@ -92,20 +89,17 @@ function Login() {
               />
             </div>
 
-            {/* Error Message */}
-            {error && <div className="mb-4 text-red-600 text-sm">{error}</div>}
+            {error && <div className="mb-4 text-red-600 text-[14px]">{error}</div>}
 
-            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+              className="w-full bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition duration-300"
             >
               Login
             </button>
           </form>
         )}
 
-        {/* Forgot Password Link */}
         {!isLoggedIn && (
           <div className="mt-4 text-center">
             <a

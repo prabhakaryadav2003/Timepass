@@ -26,30 +26,26 @@ const dummyReviews = [
 // Reusable Modal component for confirmation
 const ConfirmationModal = ({ show, review, onClose, onConfirm }) => (
   <div
-    className={`fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center ${
-      show ? "block" : "hidden"
+    className={`fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center transition-opacity duration-300 ${
+      show ? "opacity-100 visible" : "opacity-0 invisible"
     }`}
   >
-    <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-      <h3 className="text-xl font-semibold mb-4">Confirm Removal</h3>
-      <p className="mb-4">
-        Are you sure you want to remove the following review?
-      </p>
-      <p className="font-medium text-gray-800 mb-4">
-        <strong>{review?.review}</strong>
-      </p>
-      <div className="flex justify-between">
+    <div className="bg-white rounded-lg shadow-lg p-8 w-96">
+      <h3 className="text-xl font-semibold mb-4 text-gray-800">Confirm Removal</h3>
+      <p className="mb-4 text-gray-600">Are you sure you want to remove the following review?</p>
+      <p className="font-medium text-gray-800 mb-4">{review?.review}</p>
+      <div className="flex justify-end space-x-4">
         <button
           onClick={onClose}
-          className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400"
+          className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition"
         >
-          Close
+          Cancel
         </button>
         <button
           onClick={() => onConfirm(review?.id)}
-          className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+          className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
         >
-          Remove Review
+          Remove
         </button>
       </div>
     </div>
@@ -91,11 +87,9 @@ const RemoveInappropriateReviews = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className="bg-gray-100 pt-32">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">
-          Inappropriate Reviews
-        </h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">Inappropriate Reviews</h2>
 
         {/* Error message */}
         {error && (
@@ -109,27 +103,17 @@ const RemoveInappropriateReviews = () => {
           <table className="min-w-full table-auto border-collapse">
             <thead className="bg-gray-200">
               <tr>
-                <th className="px-6 py-3 text-left text-sm font-medium text-gray-800">
-                  Reviewer
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-medium text-gray-800">
-                  Restaurant
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-medium text-gray-800">
-                  Review
-                </th>
-                <th className="px-6 py-3 text-center text-sm font-medium text-gray-800">
-                  Actions
-                </th>
+                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">Reviewer</th>
+                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">Restaurant</th>
+                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">Review</th>
+                <th className="px-6 py-3 text-center text-base font-bold text-gray-800">Actions</th>
               </tr>
             </thead>
             <tbody>
               {reviews.map((review) => (
-                <tr key={review.id} className="border-t">
+                <tr key={review.id} className="border-t hover:bg-gray-50">
                   <td className="px-6 py-4 text-gray-800">{review.reviewer}</td>
-                  <td className="px-6 py-4 text-gray-800">
-                    {review.restaurant}
-                  </td>
+                  <td className="px-6 py-4 text-gray-800">{review.restaurant}</td>
                   <td className="px-6 py-4 text-gray-800">{review.review}</td>
                   <td className="px-6 py-4 text-center">
                     <button

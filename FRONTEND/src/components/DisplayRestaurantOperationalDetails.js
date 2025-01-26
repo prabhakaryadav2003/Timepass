@@ -40,12 +40,12 @@ function DisplayRestaurantOperationalDetails({ restaurantId }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className="bg-gray-100 pt-24">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Restaurant Operational Details</h2>
 
         {/* Restaurant Images */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Restaurant Images</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {restaurantDetails.restaurantImages.map((img, index) => (
@@ -55,7 +55,7 @@ function DisplayRestaurantOperationalDetails({ restaurantId }) {
         </div>
 
         {/* Food Images */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Food Images</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {restaurantDetails.foodImages.map((img, index) => (
@@ -65,10 +65,10 @@ function DisplayRestaurantOperationalDetails({ restaurantId }) {
         </div>
 
         {/* Menu Images / Menu PDF */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Menu Images / Menu PDF</h3>
           <div className="mb-4">
-            <strong>Menu Images:</strong>
+            <strong className="text-gray-700">Menu Images:</strong>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {restaurantDetails.menuImages.map((img, index) => (
                 <img key={index} src={img} alt={`Menu Image ${index + 1}`} className="w-full h-40 object-cover rounded-lg" />
@@ -76,29 +76,29 @@ function DisplayRestaurantOperationalDetails({ restaurantId }) {
             </div>
           </div>
           <div>
-            <strong>Menu PDF:</strong> <a href={restaurantDetails.menuPdf} className="text-blue-600" target="_blank" rel="noopener noreferrer">View Menu PDF</a>
+            <strong className="text-gray-700">Menu PDF:</strong> <a href={restaurantDetails.menuPdf} className="text-blue-600" target="_blank" rel="noopener noreferrer">View Menu PDF</a>
           </div>
         </div>
 
         {/* Cuisines */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Cuisines</h3>
           <div className="mb-4">{restaurantDetails.cuisines}</div>
         </div>
 
         {/* Opening & Closing Time */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Operating Hours</h3>
           <div className="mb-4">
-            <strong>Opening Time:</strong> {restaurantDetails.openingTime}
+            <strong className="text-gray-700">Opening Time:</strong> {restaurantDetails.openingTime}
           </div>
           <div className="mb-4">
-            <strong>Closing Time:</strong> {restaurantDetails.closingTime}
+            <strong className="text-gray-700">Closing Time:</strong> {restaurantDetails.closingTime}
           </div>
         </div>
 
         {/* Opening Days */}
-        <div className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Opening Days</h3>
           <div className="mb-4">{restaurantDetails.openingDays}</div>
         </div>
