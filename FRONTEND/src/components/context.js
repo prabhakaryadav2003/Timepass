@@ -6,6 +6,9 @@ const GlobalProvider = ({ children }) => {
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [isLoggedInGlobal, setIsLoggedInGlobal] = useState(false);
   const [userData] = useState(null);
+
+  const [searchInput, setSearchInput] = useState(null);
+
   const openModal = () => {
     setIsModelOpen(true);
   };
@@ -18,6 +21,8 @@ const GlobalProvider = ({ children }) => {
         openModal,
         isLoggedInGlobal,
         setIsLoggedInGlobal,
+        searchInput,
+        setSearchInput,
       }}
     >
       {children}

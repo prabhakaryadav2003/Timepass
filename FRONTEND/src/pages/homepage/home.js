@@ -17,22 +17,21 @@ function Home() {
       try {
         const response = await fetch(
           "http://192.168.22.92:8000/api/restaurants/"
-        ); // Replace with your actual API endpoint
+        ); 
         if (response.ok) {
           const data = await response.json();
-          // Assuming 'data' is an array of restaurant objects
           // console.log(data);
           const formattedData = data.map((restaurant) => ({
             id: restaurant.id,
             name: restaurant.name,
-            isVeg: restaurant.is_veg, // Assuming you want to map 'is_veg' to 'isVeg'
+            isVeg: restaurant.is_veg, 
             phone: restaurant.phone,
             description: restaurant.description,
-            restaurantImage: restaurant.restaurant_image_url, // Assuming 'restaurant_image_url' is the image URL
+            restaurantImage: restaurant.restaurant_image_url, 
             openTime: restaurant.open_time,
             closeTime: restaurant.close_time,
           }));
-          setRestaurantsData(formattedData); // Set the formatted data
+          setRestaurantsData(formattedData); 
         } else {
           console.error("Failed to fetch restaurants:", response.statusText);
         }

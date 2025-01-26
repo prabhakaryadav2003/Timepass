@@ -49,7 +49,6 @@ const ResturantPage = () => {
         </Carousel>
       )}
       <div className="flex flex-wrap lg:flex-nowrap w-full max-w-[95%] mt-8">
-        {/* Left Section */}
         <div className="flex-1 border border-none p-4 space-y-6">
           <Amenities />
 
@@ -88,7 +87,6 @@ const ResturantPage = () => {
         </div>
         <Modal isOpen={isModelOpen} onClose={() => setIsModelOpen(false)} />
 
-        {/* Right Section */}
         <div className="flex-1 lg:max-w-sm border border-none m-4">
           <div className="bg-gray-100">
             <RestaurantCard

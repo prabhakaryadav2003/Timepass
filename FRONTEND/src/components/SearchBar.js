@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { GlobalGlobalContext } from "../components/context";
+
 function SearchBar() {
+  const { searchInput, setSearchInput } = GlobalGlobalContext();
+
   return (
     <div className="my-6 px-4 md:px-8 mt-[6rem]">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -11,6 +15,8 @@ function SearchBar() {
             id="searchInput"
             className="w-full py-3 px-5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
             placeholder="Search for restaurants..."
+            value={searchInput} // Controlled component
+            onChange={(e) => setSearchInput(e.target.value)} // Update state
           />
         </div>
 
