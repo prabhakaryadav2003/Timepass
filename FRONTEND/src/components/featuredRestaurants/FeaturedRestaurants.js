@@ -35,7 +35,7 @@ function FeaturedRestaurants({ restaurants }) {
         return (
           <Link to="/resturant">
             <div
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-95 transition duration-300 ease-in-out"
+              className=" h-[400px] bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-90 transition duration-300 ease-in-out"
               key={index}
               onClick={() => handleClick(restaurant.id)}
             >
