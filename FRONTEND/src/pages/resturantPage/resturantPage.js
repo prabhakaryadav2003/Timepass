@@ -20,13 +20,16 @@ import Modal from "../../components/modal";
 
 const RestaurantPage = () => {
   const [loading, setLoading] = useState(true);
-  const { isModelOpen, setIsModelOpen } = GlobalGlobalContext();
+
+  const { isModelOpen, setIsModelOpen, restData } = GlobalGlobalContext();
+  const [currentItem, setCurrentItem] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
+
 
   const handleWhatsAppClick = (phone) => {
     const whatsappUrl = `https://wa.me/${phone.replace(/[^\d]/g, "")}`;
@@ -37,6 +40,7 @@ const RestaurantPage = () => {
     const mailtoUrl = `mailto:${email}`;
     window.location.href = mailtoUrl;
   };
+
 
   return (
     <div className="flex flex-col h-full w-full items-center">
@@ -60,7 +64,6 @@ const RestaurantPage = () => {
         </Carousel>
       )}
       <div className="flex flex-wrap lg:flex-nowrap w-full max-w-[95%] mt-8">
-        {/* Left Section */}
         <div className="flex-1 border border-none p-4 space-y-6">
           <Amenities />
 
@@ -77,7 +80,10 @@ const RestaurantPage = () => {
                 Opening Hours
               </h3>
               <p className="text-gray-700 font-medium">
-                <span className="font-semibold">9:00 AM - 10:00 PM</span>
+                <span className="font-semibold">
+                  {/* {currentItem.open_time} - {currentItem.close_time} */}
+                  123123213
+                </span>
               </p>
             </div>
           </div>
@@ -99,7 +105,6 @@ const RestaurantPage = () => {
         </div>
         <Modal isOpen={isModelOpen} onClose={() => setIsModelOpen(false)} />
 
-        {/* Right Section */}
         <div className="flex-1 lg:max-w-sm border border-none m-4">
           <div className="bg-gray-100">
             <RestaurantCard
