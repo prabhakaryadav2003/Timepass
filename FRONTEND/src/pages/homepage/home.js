@@ -24,7 +24,7 @@ function Home() {
         if (response.ok) {
           const data = await response.json();
           // Assuming 'data' is an array of restaurant objects
-          console.log(data);
+          // console.log(data);
           const formattedData = data.map((restaurant) => ({
             id: restaurant.id,
             name: restaurant.name,
