@@ -1,37 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar";
 import FeaturedRestaurants from "../../components/featuredRestaurants/FeaturedRestaurants";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/NavBar";
-
 import Loader from "../../components/loading";
-
-import { useState, useEffect } from "react";
+import { GlobalGlobalContext } from "../../components/context";
 
 function Home() {
   const [loading, setLoading] = useState(true);
   const [restaurantsData, setRestaurantsData] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const { searchInput, setResData } = GlobalGlobalContext();
 
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
         const response = await fetch(
           "http://192.168.22.92:8000/api/restaurants/"
-        ); 
+        );
         if (response.ok) {
           const data = await response.json();
-          // console.log(data);
+          console.log(data);
+          setResData(data);
           const formattedData = data.map((restaurant) => ({
             id: restaurant.id,
             name: restaurant.name,
-            isVeg: restaurant.is_veg, 
+            isVeg: restaurant.is_veg,
             phone: restaurant.phone,
             description: restaurant.description,
-            restaurantImage: restaurant.restaurant_image_url, 
+            restaurantImage: restaurant.restaurant_image_url,
             openTime: restaurant.open_time,
             closeTime: restaurant.close_time,
           }));
-          setRestaurantsData(formattedData); 
+          setRestaurantsData(formattedData);
+          setFilteredRestaurants(formattedData);
         } else {
           console.error("Failed to fetch restaurants:", response.statusText);
         }
@@ -45,6 +47,22 @@ function Home() {
     fetchRestaurants();
   }, []);
 
+  useEffect(() => {
+    const filtered = restaurantsData.filter((restaurant) => {
+      const name = restaurant.name?.toLowerCase() || "";
+      const description = restaurant.description?.toLowerCase() || "";
+      const phone = restaurant.phone?.toLowerCase() || "";
+      const search = searchInput?.toLowerCase() || "";
+
+      return (
+        name.includes(search) ||
+        description.includes(search) ||
+        phone.includes(search)
+      );
+    });
+    setFilteredRestaurants(filtered);
+  }, [searchInput, restaurantsData]);
+
   return (
     <div className="flex flex-col border border-black h-full w-full p-0">
       <Navbar />
@@ -57,7 +75,7 @@ function Home() {
           {loading ? (
             <Loader />
           ) : (
-            <FeaturedRestaurants restaurants={restaurantsData} />
+            <FeaturedRestaurants restaurants={filteredRestaurants} />
           )}
         </div>
       </div>

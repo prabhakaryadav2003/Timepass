@@ -9,7 +9,6 @@ import Footer from '../components/Footer';
 const Searchpage = () => {
     const [loadingRestaurants, setLoadingRestaurants] = useState(true);
 
-    // Filter state to be passed to Filters component
     const [filters, setFilters] = useState({
         rating: 5,
         priceRange: [0, 500],

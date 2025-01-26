@@ -20,12 +20,15 @@ import Modal from "../../components/modal";
 
 const ResturantPage = () => {
   const [loading, setLoading] = useState(true);
-  const { isModelOpen, setIsModelOpen } = GlobalGlobalContext();
+  const { isModelOpen, setIsModelOpen, restData } = GlobalGlobalContext();
+  const [currentItem, setCurrentItem] = useState(null);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
+
+  console.log("this is the current time", restData);
 
   return (
     <div className="flex flex-col h-full w-full items-center">
@@ -65,7 +68,10 @@ const ResturantPage = () => {
                 Opening Hours
               </h3>
               <p className="text-gray-700 font-medium">
-                <span className="font-semibold">9:00 AM - 10:00 PM</span>
+                <span className="font-semibold">
+                  {/* {currentItem.open_time} - {currentItem.close_time} */}
+                  123123213
+                </span>
               </p>
             </div>
           </div>
@@ -98,7 +104,6 @@ const ResturantPage = () => {
               email={"random@gmail.com"}
             />
           </div>
-
         </div>
       </div>
     </div>
