@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../components/NavBar";
 
 function Signup() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_Name, setFirstName] = useState("");
+  const [last_Name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -12,13 +12,40 @@ function Signup() {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isSignedUp, setIsSignedUp] = useState(false);
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
     // Validate fields
-    if (!firstName || !lastName || !email || !password || !phoneNumber) {
+    if (!first_Name || !last_Name || !email || !password) {
       setError("Please fill in all fields");
       return;
+    }
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/auth/register/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          first_name,
+          last_name,
+          phone,
+        }),
+      });
+    
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.access);
+        setIsLoggedIn(true);
+      } else {
+        const errorData = await response.json();
+        setError(errorData.detail || 'Registration failed. Please check your details.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
     }
 
     // Mock API call to send OTP

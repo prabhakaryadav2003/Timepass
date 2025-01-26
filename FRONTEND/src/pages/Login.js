@@ -35,7 +35,8 @@ function Login() {
         setError('Invalid email or password');
       }
     } catch (err) {
-      setError('An error occurred. Please try again later.');
+      const errorData = await response.json();
+      setError(errorData.detail || 'Registration failed. Please check your details.');
     }
   };
   
