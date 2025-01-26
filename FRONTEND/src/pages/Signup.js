@@ -11,6 +11,7 @@ function SignupForm() {
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleSignup = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
 
