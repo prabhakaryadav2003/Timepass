@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Web App Data
+
+BACKEND/resturant_images/*
+BACKEND/food_images/*
+BACKEND/other_images/*
