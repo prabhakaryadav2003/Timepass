@@ -1,12 +1,13 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 # To add phone number, add email as unique identifier
 class CustomUser(AbstractUser):
     phone = models.CharField(max_length=10, blank=True, null=True)
     email = models.EmailField(unique=True)
     favorite_restaurant = models.ManyToManyField('Restaurant', related_name='favorite_restaurant', blank=True)
-    username = None
+    username = models.CharField(max_length=100, unique=False, default="None", blank=True, null=True)
 
     USERNAME_FIELD = 'email'  # Use email as the unique identifier
     REQUIRED_FIELDS = ['first_name', 'last_name']  # Specify required fields for superuser creation
@@ -17,12 +18,13 @@ class CustomUser(AbstractUser):
 # Model for restaurant
 class Restaurant(models.Model):
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='restaurants')
+    owner_name = models.CharField(max_length=100, blank=True)  # Added owner name field
     name = models.CharField(max_length=100)
     is_veg = models.BooleanField(default=True)
     phone = models.CharField(max_length=10)
     average_rating = models.FloatField(null=True, blank=True)
     description = models.TextField(blank=True)
-    restaurant_image_url = models.CharField(blank=True, null=True, max_length=200)
+    restaurant_image = models.FileField(upload_to='resturant_images/',blank=True, null=True, max_length=200)
     food_image = models.ImageField(upload_to='food_images/', blank=True, null=True)
     other_image = models.ImageField(upload_to='other_images/', blank=True, null=True)
     open_time = models.TimeField()
@@ -31,6 +33,10 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def add(self, *args, **kwargs):
+        self.owner_name = self.owner.first_name + " " + self.owner.last_name
+        super(Restaurant, self).save(*args, **kwargs)
     
 class Address(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='addresses')
@@ -62,7 +68,7 @@ class Booking(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='bookings')
     table_no = models.PositiveIntegerField()
     no_of_person = models.PositiveIntegerField()
-    booking_time = models.DateTimeField()
+    booking_time = models.TimeField()
     booking_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
 

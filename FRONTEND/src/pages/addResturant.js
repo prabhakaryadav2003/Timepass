@@ -9,7 +9,7 @@ const RestaurantForm = () => {
     isVeg: true,
     phone: "",
     description: "",
-    restaurantImage: "", // Changed from null to "" since it's a URL
+    restaurantImage: null, // Changed to null to handle file input
     openTime: "",
     closeTime: "",
   });
@@ -18,33 +18,31 @@ const RestaurantForm = () => {
     const { name, value, type, files } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === "file" ? files[0] : value, // Handling file inputs (if required)
+      [name]: type === "file" ? files[0] : value, // Handling file inputs
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataToSend = {
-      name: formData.name,
-      is_veg: formData.isVeg,
-      phone: formData.phone,
-      description: formData.description,
-      open_time: formData.openTime,
-      close_time: formData.closeTime,
-      restaurantImage: formData.restaurantImage, // Send the image URL
-    };
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("is_veg", formData.isVeg);
+    formDataToSend.append("phone", formData.phone);
+    formDataToSend.append("description", formData.description);
+    formDataToSend.append("open_time", formData.openTime);
+    formDataToSend.append("close_time", formData.closeTime);
+    formDataToSend.append("restaurant_image", formData.restaurantImage); // Append the file
 
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://192.168.22.92:8000/api/restaurants/add/", {
+      const response = await fetch("http://localhost:8000/api/restaurants/add/", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formDataToSend), // Send the JSON with the image URL
+        body: formDataToSend,
       });
 
       if (response.ok) {
@@ -56,7 +54,6 @@ const RestaurantForm = () => {
       console.error("Error:", error);
     }
   };
-
 
   return (
     <div className="bg-gray-50 min-h-screen flex items-center justify-center">
@@ -119,14 +116,13 @@ const RestaurantForm = () => {
         </div>
 
         <div className="flex flex-col mb-6">
-          <label className="text-sm font-medium text-gray-700 mb-2">Restaurant Image URL</label>
+          <label className="text-sm font-medium text-gray-700 mb-2">Restaurant Image</label>
           <input
-            type="text"
+            type="file"
             name="restaurantImage"
-            value={formData.restaurantImage} // Bind the value here
             onChange={handleChange}
             className="p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter image URL"
+            required
           />
         </div>
 

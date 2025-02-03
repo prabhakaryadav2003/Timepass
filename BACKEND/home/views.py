@@ -1,22 +1,24 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, parser_classes
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.authtoken.models import Token
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from .serializers import *
 from rest_framework.decorators import api_view, permission_classes
+from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from .models import *
+from django.contrib.auth.models import update_last_login
 
 # Create your views here.
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@parser_classes([JSONParser])
 def login_view(request):
     """
     Authenticate the user and return a JWT token.
     """
-    data = JSONParser().parse(request)
+    data = request.data
     email = data.get('email')
     password = data.get('password')
 
@@ -25,8 +27,10 @@ def login_view(request):
 
     user = authenticate(email=email, password=password)
     if user is not None:
+        update_last_login(None, user)
         refresh = RefreshToken.for_user(user)
         return Response({
+            'detail': "Login successful",
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         })
@@ -35,9 +39,10 @@ def login_view(request):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@parser_classes([JSONParser, MultiPartParser, FormParser])
 def register(request):
     if request.method == 'POST':
-        data = JSONParser().parse(request)
+        data = request.data
         serializer = RegistrationSerializer(data=data)
         
         if serializer.is_valid():
@@ -58,9 +63,10 @@ def restaurant_list(request):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
+@parser_classes([JSONParser, MultiPartParser, FormParser])
 def restaurant_create(request):
     if request.method == 'POST':
-        data = JSONParser().parse(request)
+        data = request.data
         data['owner'] = request.user.id  # Set the owner as the logged-in user
         serializer = RestaurantSerializer(data=data)
         if serializer.is_valid():
@@ -82,10 +88,12 @@ def restaurant_detail(request, pk):
 
     if request.method == 'GET':
         serializer = RestaurantSerializer(restaurant)
+        print(serializer.data)
         return Response(serializer.data)
 
 @api_view(['PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
+@parser_classes([JSONParser, MultiPartParser, FormParser])
 def restaurant_update_delete(request, pk):
     try:
         restaurant = Restaurant.objects.get(pk=pk)
@@ -96,7 +104,7 @@ def restaurant_update_delete(request, pk):
         return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
     
     if request.method == 'PUT':
-        data = JSONParser().parse(request)
+        data = request.data
         serializer = RestaurantSerializer(restaurant, data=data)
         if serializer.is_valid():
             serializer.save()
@@ -134,6 +142,7 @@ def address_search(request, city):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
+@parser_classes([JSONParser])
 def address_create(request, restaurant_pk):
     try:
         restaurant = Restaurant.objects.get(pk=restaurant_pk)
@@ -144,7 +153,7 @@ def address_create(request, restaurant_pk):
         return Response({'detail': 'Permission denied'}, status=status.HTTP_403_FORBIDDEN)
 
     if request.method == 'POST':
-        data = JSONParser().parse(request)
+        data = request.data
         data['restaurant'] = restaurant.id
         serializer = AddressSerializer(data=data)
         if serializer.is_valid():
@@ -156,6 +165,7 @@ def address_create(request, restaurant_pk):
 # Menu
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
+@parser_classes([JSONParser])
 def menu_list_create(request, restaurant_pk):
     try:
         restaurant = Restaurant.objects.get(pk=restaurant_pk)
@@ -183,6 +193,7 @@ def menu_list_create(request, restaurant_pk):
 # Booking
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
+@parser_classes([JSONParser])
 def booking_list_create(request):
     if request.method == 'GET':
         bookings = Booking.objects.filter(user=request.user)
@@ -201,6 +212,7 @@ def booking_list_create(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
+@parser_classes([JSONParser])
 def booking_detail_update_delete(request, pk):
     try:
         booking = Booking.objects.get(pk=pk)
@@ -229,6 +241,7 @@ def booking_detail_update_delete(request, pk):
 # Reviews
 @api_view(['POST', 'GET'])
 @permission_classes([IsAuthenticated])
+@parser_classes([JSONParser])
 def review_list_create(request, restaurant_pk):
     try:
         restaurant = Restaurant.objects.get(pk=restaurant_pk)

@@ -16,7 +16,7 @@ function Home() {
     const fetchRestaurants = async () => {
       try {
         const response = await fetch(
-          "http://192.168.22.92:8000/api/restaurants/"
+          "http://localhost:8000/api/restaurants/"
         );
         if (response.ok) {
           const data = await response.json();

@@ -2,31 +2,9 @@ import React from "react";
 
 import { Link } from "react-router";
 
-import { GlobalGlobalContext } from "../../components/context";
-
 function FeaturedRestaurants({ restaurants }) {
-  const { setCurrentid, dataSetting } = GlobalGlobalContext();
-
   const handleClick = (id) => {
-    setCurrentid(id);
-    dataSetting(fetchRestaurants(id));
-  };
-
-  const fetchRestaurants = async (id) => {
-    try {
-      const response = await fetch(
-        `http://192.168.22.92:8000/api/restaurants/${id}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        return data;
-      } else {
-        console.error("Failed to fetch restaurants:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    localStorage.setItem("restaurant_id", id);
   };
 
   return (

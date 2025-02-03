@@ -4,9 +4,7 @@ const Modal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     day: "",
     time: "",
-    "2 sitting": 0,
-    "4 sitting": 0,
-    "6 sitting": 0,
+
   });
 
   if (!isOpen) return null;

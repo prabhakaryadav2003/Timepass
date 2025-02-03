@@ -22,7 +22,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "http://192.168.22.92:8000/api/auth/login/",
+        "http://localhost:8000/api/auth/login/",
         {
           method: "POST",
           headers: {

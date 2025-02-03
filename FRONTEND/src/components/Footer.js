@@ -21,7 +21,7 @@ function Footer() {
           </a>
         </div>
         <div className="text-gray-500 text-sm">
-          <p>&copy; 2025 WebsiteName. All rights reserved.</p>
+          <p>&copy; 2025 Table Heaven. All rights reserved.</p>
         </div>
       </div>
     </footer>

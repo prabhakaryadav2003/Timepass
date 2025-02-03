@@ -1,6 +1,5 @@
 import re
 from rest_framework import serializers
-from django.contrib.auth import authenticate
 from .models import *
 
 class RegistrationSerializer(serializers.ModelSerializer):
@@ -28,6 +27,7 @@ class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
         fields = '__all__'
+    
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:

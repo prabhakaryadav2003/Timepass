@@ -23,7 +23,7 @@ function RestaurantInformation({ onSubmit }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://192.168.22.92:8000/api/restaurants/",
+        "http://localhost:8000/api/restaurants/",
         {
           method: "POST",
           headers: {
