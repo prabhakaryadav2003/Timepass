@@ -1,25 +1,25 @@
-import React from 'react';
+import React from "react";
 
 function UserProfile() {
   const user = {
-    image: 'https://via.placeholder.com/150', // Placeholder image URL
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    phone: '+1 234 567 8901',
+    image: "https://via.placeholder.com/150", // Placeholder image URL
+    name: "John Doe",
+    email: "johndoe@example.com",
+    phone: "+1 234 567 8901",
   };
 
   const handleEditProfile = () => {
-    console.log('Edit Profile Clicked');
+    console.log("Edit Profile Clicked");
     // Logic to navigate to the edit profile page can be added here
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 pt-24">
+    <div className="flex justify-center items-center ">
       <div className="w-full max-w-4xl bg-white shadow-xl rounded-lg p-8 flex items-center space-x-8">
         {/* Profile Image */}
         <div className="flex-shrink-0">
           <img
-            src='https://t4.ftcdn.net/jpg/06/78/09/75/360_F_678097580_mgsNEISedI7fngOwIipYtEU0T6SN8qKv.jpg'
+            src="https://t4.ftcdn.net/jpg/06/78/09/75/360_F_678097580_mgsNEISedI7fngOwIipYtEU0T6SN8qKv.jpg"
             alt="User Avatar"
             className="w-40 h-40 rounded-full border-4 border-blue-500 shadow-xl"
           />
@@ -30,10 +30,12 @@ function UserProfile() {
           <h2 className="text-4xl font-semibold text-gray-800">{user.name}</h2>
           <div className="space-y-2">
             <p className="text-lg text-gray-600">
-              <span className="font-medium text-gray-800">Email:</span> {user.email}
+              <span className="font-medium text-gray-800">Email:</span>{" "}
+              {user.email}
             </p>
             <p className="text-lg text-gray-600">
-              <span className="font-medium text-gray-800">Phone:</span> {user.phone}
+              <span className="font-medium text-gray-800">Phone:</span>{" "}
+              {user.phone}
             </p>
           </div>
 

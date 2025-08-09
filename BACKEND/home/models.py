@@ -24,7 +24,7 @@ class Restaurant(models.Model):
     phone = models.CharField(max_length=10)
     average_rating = models.FloatField(null=True, blank=True)
     description = models.TextField(blank=True)
-    restaurant_image = models.FileField(upload_to='resturant_images/',blank=True, null=True, max_length=200)
+    restaurant_image = models.FileField(upload_to='public/resturant_images/',blank=True, null=True, max_length=200)
     food_image = models.ImageField(upload_to='food_images/', blank=True, null=True)
     other_image = models.ImageField(upload_to='other_images/', blank=True, null=True)
     open_time = models.TimeField()
@@ -47,7 +47,7 @@ class Address(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.address
+        return self.city
 
 # Model for menu
 class Menu(models.Model):

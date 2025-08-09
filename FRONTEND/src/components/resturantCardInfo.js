@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import TableBookingModal from "./TableBookingModal";
 
 const fetchRestaurants = async (setRestaurantData) => {
@@ -19,7 +19,17 @@ const fetchRestaurants = async (setRestaurantData) => {
   }
 };
 
-const RestaurantCard = ({ name, owner_name, description, phone, rating, email, onPhoneClick, onEmailClick, onBookNowClick }) => {
+const RestaurantCard = ({
+  name,
+  owner_name,
+  description,
+  phone,
+  rating,
+  email,
+  onPhoneClick,
+  onEmailClick,
+  onBookNowClick,
+}) => {
   return (
     <div className="p-6 bg-white rounded-xl shadow-lg max-w-md">
       <h3 className="text-2xl font-bold text-gray-800 mb-2">{name}</h3>
@@ -76,7 +86,7 @@ export default function BookingPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
+    <div className="flex flex-col items-center justify-center align-top p-4">
       {restaurantData ? (
         <RestaurantCard
           name={restaurantData.name}
@@ -92,7 +102,10 @@ export default function BookingPage() {
       ) : (
         <p>Loading...</p>
       )}
-      <TableBookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <TableBookingModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }

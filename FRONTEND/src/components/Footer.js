@@ -1,25 +1,49 @@
-import React from 'react';
+import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto text-center">
-        <div className="flex justify-center space-x-8 mb-8">
-          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium">Terms of Service</a>
-          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium">Privacy Policy</a>
-          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium">Contact Us</a>
+    <footer className="bg-gray-900 text-white py-1">
+      <div className="container p-2 mx-auto text-center">
+        <div className="flex justify-center space-x-8 mb-2">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium"
+          >
+            Terms of Service
+          </a>
+          <a
+            href="#"
+            className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="#"
+            className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-lg font-medium"
+          >
+            Contact Us
+          </a>
         </div>
-        <div className="flex justify-center space-x-8 mb-8">
-          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl">
+        {/* <div className="flex justify-center space-x-8 mb-8">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl"
+          >
             <i className="fab fa-facebook"></i>
           </a>
-          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl"
+          >
             <i className="fab fa-twitter"></i>
           </a>
-          <a href="#" className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-blue-500 transition duration-300 ease-in-out text-2xl"
+          >
             <i className="fab fa-instagram"></i>
           </a>
-        </div>
+        </div> */}
         <div className="text-gray-500 text-sm">
           <p>&copy; 2025 Table Heaven. All rights reserved.</p>
         </div>

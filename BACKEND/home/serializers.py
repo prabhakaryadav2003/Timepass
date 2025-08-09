@@ -16,12 +16,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-    def validate(self, data):
-        if CustomUser.objects.filter(email=data['email']).exists():
+    def validate(self, attrs):
+        if CustomUser.objects.filter(email=attrs['email']).exists():
             raise serializers.ValidationError({"message": "Email already exists"})
-        if re.match(r'^[6-9]\d{9}$', data['phone']) is None:
+        if re.match(r'^[6-9]\d{9}$', attrs['phone']) is None:
             raise serializers.ValidationError({"message": "Phone number is invalid"})
-        return data
+        return attrs
 
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:

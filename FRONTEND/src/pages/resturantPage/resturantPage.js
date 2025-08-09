@@ -30,7 +30,6 @@ const RestaurantPage = () => {
     }, 2000);
   }, []);
 
-
   const handleWhatsAppClick = (phone) => {
     const whatsappUrl = `https://wa.me/${phone.replace(/[^\d]/g, "")}`;
     window.open(whatsappUrl, "_blank");
@@ -40,7 +39,6 @@ const RestaurantPage = () => {
     const mailtoUrl = `mailto:${email}`;
     window.location.href = mailtoUrl;
   };
-
 
   return (
     <div className="flex flex-col h-full w-full items-center">
@@ -88,7 +86,7 @@ const RestaurantPage = () => {
             </div>
           </div>
           <div className="border border-none flex flex-col lg:flex-row w-full space-y-4 lg:space-y-0 lg:space-x-4 mt-6">
-            <div className="lg:w-1/3 w-full border rounded-xl bg-white">
+            <div className="lg:w-1/3 w-full rounded-xl">
               <Address
                 shopNumber="101"
                 floorTower="2nd Floor, Tower A"
@@ -98,15 +96,15 @@ const RestaurantPage = () => {
               />
             </div>
 
-            <div className="lg:flex-1 w-full border rounded-xl">
+            <div className="lg:flex-1 w-full rounded-xl">
               <Map />
             </div>
           </div>
         </div>
         <Modal isOpen={isModelOpen} onClose={() => setIsModelOpen(false)} />
 
-        <div className="flex-1 lg:max-w-sm border border-none m-4">
-          <div className="bg-gray-100">
+        <div className="flex-1 lg:max-w-sm border border-none">
+          <div className="">
             <RestaurantCard
               name="Delicious Bites"
               owner="Jane Smith"

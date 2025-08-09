@@ -7,10 +7,10 @@ import RemoveInappropriateReviews from "../components/RemoveInappropriateReview"
 
 const WebsiteAdmin = () => {
   return (
-    <div className="flex flex-col border border-black h-full w-full p-32">
-      <Navbar/>
-      <ManageRestaurant/>
-      <RemoveInappropriateReviews/>
+    <div className="flex flex-col border border-black h-full w-full pt-16 pb-8">
+      <Navbar />
+      <ManageRestaurant />
+      <RemoveInappropriateReviews />
     </div>
   );
 };

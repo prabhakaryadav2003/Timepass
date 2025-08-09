@@ -15,9 +15,7 @@ function Home() {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:8000/api/restaurants/"
-        );
+        const response = await fetch("http://localhost:8000/api/restaurants/");
         if (response.ok) {
           const data = await response.json();
           console.log(data);
@@ -28,7 +26,7 @@ function Home() {
             isVeg: restaurant.is_veg,
             phone: restaurant.phone,
             description: restaurant.description,
-            restaurantImage: restaurant.restaurant_image_url,
+            restaurantImage: restaurant.restaurant_image,
             openTime: restaurant.open_time,
             closeTime: restaurant.close_time,
           }));
@@ -64,7 +62,7 @@ function Home() {
   }, [searchInput, restaurantsData]);
 
   return (
-    <div className="flex flex-col border border-black h-full w-full p-0">
+    <div className="flex flex-col border border-black w-full p-0">
       <Navbar />
       <SearchBar />
       <div className="flex flex-col items-center w-full p-4">
@@ -77,6 +75,7 @@ function Home() {
           ) : (
             <FeaturedRestaurants restaurants={filteredRestaurants} />
           )}
+          {console.log(filteredRestaurants)}
         </div>
       </div>
       <Footer />

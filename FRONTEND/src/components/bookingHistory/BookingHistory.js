@@ -6,17 +6,21 @@ function BookingHistory({ bookings = [] }) {
   if (!bookings.length) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
-        <p className="text-gray-600 text-lg">No bookings available to display.</p>
+        <p className="text-gray-600 text-lg">
+          No bookings available to display.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="bg-gray-100 pt-24">
+    <div className="pt-4">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Booking History</h2>
-        
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">
+          Booking History
+        </h2>
+
         {/* Booking Cards Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {bookings.map((booking) => (

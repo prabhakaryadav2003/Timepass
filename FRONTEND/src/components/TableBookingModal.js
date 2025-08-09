@@ -3,21 +3,30 @@ import { motion } from "framer-motion";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const TableBookingModal = ({ isOpen, onClose, title = "Book a Table", tableTypes = [{ type: "2-seat", chairs: 2 }, { type: "4-seat", chairs: 4 }, { type: "6-seat", chairs: 6 }] }) => {
+const TableBookingModal = ({
+  isOpen,
+  onClose,
+  title = "Book a Table",
+  tableTypes = [
+    { type: "2-seat", chairs: 2 },
+    { type: "4-seat", chairs: 4 },
+    { type: "6-seat", chairs: 6 },
+  ],
+}) => {
   const [selectedTables, setSelectedTables] = useState([]);
   const [selectedDateTime, setSelectedDateTime] = useState(new Date());
 
   const handleTableSelect = (table) => {
     setSelectedTables((prev) =>
-      prev.includes(table)
-        ? prev.filter((t) => t !== table)
-        : [...prev, table]
+      prev.includes(table) ? prev.filter((t) => t !== table) : [...prev, table]
     );
   };
 
   const handleBooking = () => {
     if (selectedTables.length > 0 && selectedDateTime) {
-      alert(`Tables ${selectedTables.join(", ")} booked for ${selectedDateTime}`);
+      alert(
+        `Tables ${selectedTables.join(", ")} booked for ${selectedDateTime}`
+      );
       onClose();
     } else {
       alert("Please select at least one table, date, and time.");
@@ -32,35 +41,42 @@ const TableBookingModal = ({ isOpen, onClose, title = "Book a Table", tableTypes
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
-        className="bg-white rounded-lg shadow-lg w-11/12 max-w-3xl p-6"
+        className="bg-white rounded-lg shadow-lg w-11/12 max-w-3xl m-5 p-6"
       >
         <h2 className="text-2xl font-bold text-gray-800 mb-6">{title}</h2>
 
         <div className="grid grid-cols-6 gap-6 mb-6 justify-center items-center">
-          {tableTypes.map((tableType, index) => (
+          {tableTypes.map((tableType, index) =>
             Array.from({ length: 5 }, (_, i) => i + 1).map((table) => (
               <button
                 key={`${tableType.type}-${table}`}
                 onClick={() => handleTableSelect(`${tableType.type} ${table}`)}
-                className={`relative p-4 rounded-lg border text-sm font-bold shadow-md flex flex-col items-center justify-center space-y-2 ${
+                className={`relative p-2 rounded-lg border text-sm font-bold shadow-md flex flex-col items-center justify-center space-y-2 ${
                   selectedTables.includes(`${tableType.type} ${table}`)
                     ? "bg-green-500 text-white border-green-700 scale-105"
                     : "bg-gray-100 text-gray-800 hover:bg-green-400 hover:text-white"
                 } transition-all duration-300`}
               >
                 <div className="flex space-x-1">
-                  {Array.from({ length: tableType.chairs }).map((_, chairIndex) => (
-                    <span key={chairIndex} className="text-xl">|</span>
-                  ))}
+                  {Array.from({ length: tableType.chairs }).map(
+                    (_, chairIndex) => (
+                      <span key={chairIndex} className="text-xl">
+                        |
+                      </span>
+                    )
+                  )}
                 </div>
                 <span className="text-sm">Table {table}</span>
               </button>
             ))
-          ))}
+          )}
         </div>
 
         <div className="mb-6">
-          <label htmlFor="datetime" className="block text-gray-700 font-medium mb-2">
+          <label
+            htmlFor="datetime"
+            className="block text-gray-700 font-medium mb-2"
+          >
             Select Date and Time:
           </label>
           <DatePicker

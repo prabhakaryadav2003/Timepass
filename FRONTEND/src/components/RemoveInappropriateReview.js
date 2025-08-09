@@ -31,8 +31,12 @@ const ConfirmationModal = ({ show, review, onClose, onConfirm }) => (
     }`}
   >
     <div className="bg-white rounded-lg shadow-lg p-8 w-96">
-      <h3 className="text-xl font-semibold mb-4 text-gray-800">Confirm Removal</h3>
-      <p className="mb-4 text-gray-600">Are you sure you want to remove the following review?</p>
+      <h3 className="text-xl font-semibold mb-4 text-gray-800">
+        Confirm Removal
+      </h3>
+      <p className="mb-4 text-gray-600">
+        Are you sure you want to remove the following review?
+      </p>
       <p className="font-medium text-gray-800 mb-4">{review?.review}</p>
       <div className="flex justify-end space-x-4">
         <button
@@ -87,9 +91,11 @@ const RemoveInappropriateReviews = () => {
   };
 
   return (
-    <div className="bg-gray-100 pt-32">
+    <>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Inappropriate Reviews</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">
+          Inappropriate Reviews
+        </h2>
 
         {/* Error message */}
         {error && (
@@ -103,17 +109,27 @@ const RemoveInappropriateReviews = () => {
           <table className="min-w-full table-auto border-collapse">
             <thead className="bg-gray-200">
               <tr>
-                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">Reviewer</th>
-                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">Restaurant</th>
-                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">Review</th>
-                <th className="px-6 py-3 text-center text-base font-bold text-gray-800">Actions</th>
+                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">
+                  Reviewer
+                </th>
+                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">
+                  Restaurant
+                </th>
+                <th className="px-6 py-3 text-left text-base font-bold text-gray-800">
+                  Review
+                </th>
+                <th className="px-6 py-3 text-center text-base font-bold text-gray-800">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               {reviews.map((review) => (
                 <tr key={review.id} className="border-t hover:bg-gray-50">
                   <td className="px-6 py-4 text-gray-800">{review.reviewer}</td>
-                  <td className="px-6 py-4 text-gray-800">{review.restaurant}</td>
+                  <td className="px-6 py-4 text-gray-800">
+                    {review.restaurant}
+                  </td>
                   <td className="px-6 py-4 text-gray-800">{review.review}</td>
                   <td className="px-6 py-4 text-center">
                     <button
@@ -137,7 +153,7 @@ const RemoveInappropriateReviews = () => {
         onClose={handleCloseModal}
         onConfirm={handleRemoveReview}
       />
-    </div>
+    </>
   );
 };
 

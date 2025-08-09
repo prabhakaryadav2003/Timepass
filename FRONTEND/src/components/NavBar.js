@@ -38,6 +38,9 @@ const Navbar = () => {
       <div className="hidden md:flex items-center space-x-8">
         {isLoggedInGlobal ? (
           <>
+            <Link to="/" className="text-gray-700 hover:text-gray-900 text-lg">
+              Home
+            </Link>
             <Link
               to="/user"
               className="text-gray-700 hover:text-gray-900 text-lg"
@@ -64,7 +67,7 @@ const Navbar = () => {
             </Link>
             <button
               onClick={handleLogout}
-              className="text-gray-700 hover:text-gray-900 text-lg"
+              className="text-gray-700 hover:text-gray-900 py-0 px-2 rounded-lg text-lg"
             >
               Logout
             </button>
@@ -79,7 +82,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/signup"
-              className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out text-lg"
+              className="bg-blue-600 text-white rounded-full hover:bg-blue-200 hover:scale-110 px-2 transition duration-300 ease-in-out text-lg"
             >
               Signup
             </Link>

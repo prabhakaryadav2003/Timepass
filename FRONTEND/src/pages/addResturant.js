@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Navbar from "../components/NavBar";
 
 const RestaurantForm = () => {
-
   const [formData, setFormData] = useState({
     name: "",
     isVeg: true,
@@ -37,13 +36,16 @@ const RestaurantForm = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:8000/api/restaurants/add/", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formDataToSend,
-      });
+      const response = await fetch(
+        "http://localhost:8000/api/restaurants/add/",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formDataToSend,
+        }
+      );
 
       if (response.ok) {
         console.log("Restaurant added successfully!");
@@ -56,14 +58,21 @@ const RestaurantForm = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div className="bg-gray-100 flex items-center justify-center">
       <Navbar />
 
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-xl w-[80%] sm:w-[60%] md:w-[50%] lg:w-[40%]">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Add Restaurant</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white mt-20 mb-8 p-8 rounded-lg shadow-xl w-[80%] sm:w-[60%] md:w-[50%] lg:w-[40%]"
+      >
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          Add Restaurant
+        </h2>
 
         <div className="flex flex-col mb-6">
-          <label className="text-sm font-medium text-gray-700 mb-2">Restaurant Name</label>
+          <label className="text-sm font-medium text-gray-700 mb-2">
+            Restaurant Name
+          </label>
           <input
             type="text"
             name="name"
@@ -76,7 +85,9 @@ const RestaurantForm = () => {
         </div>
 
         <div className="flex flex-col mb-6">
-          <label className="text-sm font-medium text-gray-700 mb-2">Phone</label>
+          <label className="text-sm font-medium text-gray-700 mb-2">
+            Phone
+          </label>
           <input
             type="text"
             name="phone"
@@ -89,7 +100,9 @@ const RestaurantForm = () => {
         </div>
 
         <div className="flex flex-col mb-6">
-          <label className="text-sm font-medium text-gray-700 mb-2">Is Vegetarian?</label>
+          <label className="text-sm font-medium text-gray-700 mb-2">
+            Is Vegetarian?
+          </label>
           <input
             type="checkbox"
             name="isVeg"
@@ -105,7 +118,9 @@ const RestaurantForm = () => {
         </div>
 
         <div className="flex flex-col mb-6">
-          <label className="text-sm font-medium text-gray-700 mb-2">Description</label>
+          <label className="text-sm font-medium text-gray-700 mb-2">
+            Description
+          </label>
           <textarea
             name="description"
             value={formData.description}
@@ -116,7 +131,9 @@ const RestaurantForm = () => {
         </div>
 
         <div className="flex flex-col mb-6">
-          <label className="text-sm font-medium text-gray-700 mb-2">Restaurant Image</label>
+          <label className="text-sm font-medium text-gray-700 mb-2">
+            Restaurant Image
+          </label>
           <input
             type="file"
             name="restaurantImage"
@@ -127,7 +144,9 @@ const RestaurantForm = () => {
         </div>
 
         <div className="flex flex-col mb-6">
-          <label className="text-sm font-medium text-gray-700 mb-2">Open Time</label>
+          <label className="text-sm font-medium text-gray-700 mb-2">
+            Open Time
+          </label>
           <input
             type="time"
             name="openTime"
@@ -139,7 +158,9 @@ const RestaurantForm = () => {
         </div>
 
         <div className="flex flex-col mb-6">
-          <label className="text-sm font-medium text-gray-700 mb-2">Close Time</label>
+          <label className="text-sm font-medium text-gray-700 mb-2">
+            Close Time
+          </label>
           <input
             type="time"
             name="closeTime"
@@ -157,7 +178,6 @@ const RestaurantForm = () => {
           >
             Submit
           </button>
-
         </div>
       </form>
     </div>

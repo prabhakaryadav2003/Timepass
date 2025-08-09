@@ -13,7 +13,7 @@ function UserFavourite({ favourites = [] }) {
   }
 
   return (
-    <div className="bg-gray-100 pt-24">
+    <div className="">
       <div className="container mx-auto px-4">
         {/* Heading */}
         <h2 className="text-3xl font-bold text-gray-800 mb-6">
@@ -53,17 +53,20 @@ function UserFavourite({ favourites = [] }) {
 const dummyFavourites = [
   {
     name: "Pasta Palace",
-    image: "https://via.placeholder.com/400",
+    image:
+      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&h=600&fit=crop",
     description: "Delicious Italian pasta dishes and more.",
   },
   {
     name: "Sushi Central",
-    image: "https://via.placeholder.com/400",
+    image:
+      "https://images.unsplash.com/photo-1553621042-f6e147245754?w=400&h=300&fit=crop",
     description: "Fresh sushi and Japanese delicacies.",
   },
   {
     name: "Burger Joint",
-    image: "https://via.placeholder.com/400",
+    image:
+      "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&h=600&fit=crop",
     description: "Juicy burgers and crispy fries.",
   },
 ];

@@ -55,9 +55,9 @@ function SignupForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="container flex justify-center items-center bg-gray-100">
       <Navbar />
-      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6">
+      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6 mt-12">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
           Sign Up
         </h2>
