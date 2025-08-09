@@ -28,7 +28,7 @@ function Home() {
             isVeg: restaurant.is_veg,
             phone: restaurant.phone,
             description: restaurant.description,
-            restaurantImage: restaurant.restaurant_image,
+            restaurantImage: `${process.env.REACT_APP_API_URL}${restaurant.restaurant_image}`,
             openTime: restaurant.open_time,
             closeTime: restaurant.close_time,
           }));
