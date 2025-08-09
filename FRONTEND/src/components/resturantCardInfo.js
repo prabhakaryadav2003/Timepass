@@ -5,7 +5,7 @@ const fetchRestaurants = async (setRestaurantData) => {
   try {
     const restaurant_id = localStorage.getItem("restaurant_id");
     const response = await fetch(
-      `http://localhost:8000/api/restaurants/${restaurant_id}`
+      `${process.env.REACT_APP_API_URL}/api/restaurants/${restaurant_id}`
     );
     if (response.ok) {
       const data = await response.json();

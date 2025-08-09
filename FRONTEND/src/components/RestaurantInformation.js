@@ -23,7 +23,7 @@ function RestaurantInformation({ onSubmit }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:8000/api/restaurants/",
+        `${process.env.REACT_APP_API_URL}/api/restaurants/`,
         {
           method: "POST",
           headers: {
@@ -54,16 +54,13 @@ function RestaurantInformation({ onSubmit }) {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
-
               htmlFor="restaurantName"
               className="block text-gray-700 mb-2 font-bold"
-
             >
               Restaurant Name
             </label>
             <input
               type="text"
-
               id="restaurantName"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
               value={restaurantName}
@@ -133,7 +130,6 @@ function RestaurantInformation({ onSubmit }) {
             <input
               type="email"
               id="restaurantEmail"
-
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
               value={name}
               onChange={(e) => setname(e.target.value)}
@@ -143,10 +139,8 @@ function RestaurantInformation({ onSubmit }) {
 
           <div className="mb-4">
             <label
-
               htmlFor="restaurantPhone"
               className="block text-gray-700 font-bold mb-2"
-
             >
               Restaurant Phone Number
             </label>

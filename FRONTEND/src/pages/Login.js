@@ -22,7 +22,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/api/auth/login/",
+        `${process.env.REACT_APP_API_URL}/api/auth/login/`,
         {
           method: "POST",
           headers: {
@@ -44,12 +44,10 @@ function Login() {
     }
   };
 
-
   if (isLoggedInGlobal) {
     navigate("/"); // Redirect to home if logged in
     return null; // Prevents the login form from rendering after redirect
   }
-
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -77,7 +75,6 @@ function Login() {
               required
             />
           </div>
-
 
           {/* Password Field */}
           <div className="mb-4">
@@ -112,7 +109,6 @@ function Login() {
 
         {/* Forgot Password Link */}
         {!isLoggedInGlobal && (
-
           <div className="mt-4 text-center">
             <a
               href="/forgot-password"

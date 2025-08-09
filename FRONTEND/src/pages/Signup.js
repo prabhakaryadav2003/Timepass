@@ -28,13 +28,16 @@ function SignupForm() {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/auth/register/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/auth/register/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       console.log("Form data being sent:", JSON.stringify(formData, null, 2));
 
       if (response.ok) {

@@ -37,7 +37,7 @@ const RestaurantForm = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/api/restaurants/add/",
+        `${process.env.REACT_APP_API_URL}/api/restaurants/add/`,
         {
           method: "POST",
           headers: {
